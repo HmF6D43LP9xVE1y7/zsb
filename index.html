@@ -88,7 +88,6 @@
 				background-color: transparent;
 				display: block;
 
-				margin: 0px 17.5px 0px 17.5px;
 				color: rgba(255, 255, 255, .2);
 				border-style: solid none none none;
 				border-width: .5px;
@@ -113,6 +112,16 @@
 			.main
 			{
 				background-color: transparent;
+			}
+			.title
+			{
+				font-size: 32px;
+				line-height: 35px;
+			}
+			.text
+			{
+				font-size: 16px;
+				line-height: 17.5px;
 			}
 			@media screen and (max-width: 600px)
 			{
@@ -139,7 +148,7 @@
 				}
 				.main
 				{
-					padding: 17.5px 17.5px 17.5px 175px;
+					padding: 147.333px 17.5px 17.5px 17.5px;
 				}
 			}
 			@media screen and (min-width: 601px)
@@ -160,17 +169,21 @@
 
 					padding: 17.5px 17.5px 17.5px 17.5px;
 				}
+				.footer
+				{
+					padding: 17.5px 17.5px 35px 17.5px;
+				}
 				.header img
 				{
-					background-color: transparent;
+					background-color: inherit;
 					width: 105px;
 					margin: 17.5px 17.5px 17.5px 17.5px;
 				}
 				.main
 				{
-					padding: 17.5px 17.5px 17.5px 17.5px;
+					padding: 17.5px 17.5px 17.5px 192.5px;
 				}
-				/*	-----	UNCLEANED	-----	*/
+/*	-----	UNCLEANED	-----	*/
 				.button
 				{
 					display: inline-flex;
@@ -215,27 +228,6 @@
 					padding: 8.75px 0px 0px 8.75px;
 					text-decoration: none;
 				}
-				.main
-				{
-					display: block;
-					width: 100%;
-					height: 100%;
-					margin: 0px 0px 0px 192.5px;
-					background-color: transparent;
-				}
-				.clear
-				{
-					background-color: transparent;
-					height: 350px;
-				}
-				.blue
-				{
-					background-color: #203388;
-					width: 100%;
-					margin: 17.5px 0px 17.5px 0px;
-					padding: 0px 0px 17.5px 17.5px;
-					border-radius: 35px 35px 35px 35px;
-				}
 				.content
 				{
 					height: 100vh;
@@ -244,35 +236,20 @@
 					justify-content: center;
 					color: white;
 				}
-				.title
-				{
-					margin: 0px 192.5px 0px 0px;
-					padding: 75px 35px 0px 0px;
-					text-align: right;
-					align-self: baseline;
-					font-size: 64px;
-					line-height: 70px;
-				}
-				.text
-				{
-					width: 350px;
-					font-size: 16px;
-					line-height: 17.5px;
-					margin: 17.5px 17.5px 17.5px 17.5px;
-				}
+
+/*	-----	UNCLEANED	-----	*/
 			}
 		</style>
 	</head>
 	<body oncontextmenu="return false">
 		<div class="sidebar">
 			<div class="header">
-				<img id="desktop" src="docs/docs_logo.png" usemap="#logo" width="100%" height="auto" title="" alt="">
-				<img id="mobile" src="docs/docs_logo.png" usemap="#logo" width="100%" height="auto" title="" alt="">
+				<img src="docs/docs_logo.png" usemap="#logo" width="100%" height="auto" title="" alt="">
 				<map name="logo">
 					<area shape="rect" coords="0,0,1097,1322" href="javascript:;" title="" alt="">
 				</map>
 				<div class="nav" id="desktop">
-					<!--	-----	UNCLEANED	-----	-->
+<!--	-----	UNCLEANED	-----	-->
 					<div class="spacing_175"></div>
 					<div class="divider"></div>
 					<div class="spacing_175"></div>
@@ -317,134 +294,29 @@
 							<li><a href="javascript:;" class="underlined">Betriebsverein</a></li>
 						</ul>
 					</div>
-					<!--	-----	UNCLEANED	-----	-->
+<!--	-----	UNCLEANED	-----	-->
 				</div>
 			</div>
 			<div class="footer">
-				<!--	-----	UNCLEANED	-----	-->
 				<ul class="ul">
-					<li><text>Zirkus Schule Basel</text></li>
-					<li><text>Dornacherstr. 192</text></li>
-					<li><text>CH-4053 Basel</text></li>
+					<div class="divider" id="desktop"></div>
+					<div class="spacing_175" id="desktop"></div>
+					<li><div class="text">Zirkus Schule Basel</div></li>
+					<li><div class="text">Dornacherstr. 192</div></li>
+					<li><div class="text">CH-4053 Basel</div></li>
 					<div class="spacing_175"></div>
-					<li><text>Tel. +41 61 331 27 70</text></li>
+					<li><div class="text">+41 61 331 27 70</div></li>
 				</ul>
-				<!--	-----	UNCLEANED	-----	-->
 			</div>
 		</div>
         <div class="main">
-            main
+			<div class="title">
+				main
+			</div>
+			<div class="text">
+				main
+			</div>
         </div>
-
-		<!--
-
-
-
-
-		<div class="dekstop">
-			<div class="sidebar">
-				<div class="header">
-					<a href="javascript:;">
-						<img src="docs/docs_logo.png" width="100%" height="auto" title="" alt="">
-					</a>
-					<div class="spacing_175"></div>
-					<div class="spacing_175"></div>
-					<div class="divider"></div>
-					<div class="spacing_175"></div>
-					<button class="button" data-bs-toggle="collapse" data-bs-target="#nav_000" aria-expanded="false">
-						Kursangebote
-					</button>
-					<div class="collapse" id="nav_000">
-						<ul class="ul">
-							<li><a href="javascript:;" class="underlined">Jugendliche</a></li>
-							<li><a href="javascript:;" class="underlined">Erwachsene</a></li>
-							<li><a href="javascript:;" class="underlined">Ferienkurse</a></li>
-							<li><a href="javascript:;" class="underlined">Workshops</a></li>
-						</ul>
-					</div>
-					<div class="spacing_175"></div>
-					<div class="divider"></div>
-					<div class="spacing_175"></div>
-					<button class="button" data-bs-toggle="collapse" data-bs-target="#nav_001" aria-expanded="false">
-						Zirkus Rägeboge
-					</button>
-					<div class="collapse" id="nav_001">
-						<ul class="ul">
-							<li><a href="javascript:;" class="underlined">"Hui oder Pfui"</a></li>
-							<li><a href="javascript:;" class="underlined">"Unterwegs"</a></li>
-							<div class="spacing_175"></div>
-							<li><a href="javascript:;" class="underlined">Aufführungen</a></li>
-							<li><a href="javascript:;" class="underlined">Teilnahme</a></li>
-							<li><a href="javascript:;" class="underlined">Leitbild</a></li>
-							<li><a href="javascript:;" class="underlined">Presse</a></li>
-						</ul>
-					</div>
-					<div class="spacing_175"></div>
-					<div class="divider"></div>
-					<div class="spacing_175"></div>
-					<button class="button" data-bs-toggle="collapse" data-bs-target="#nav_002" aria-expanded="false">
-						Informationen
-					</button>
-					<div class="collapse" id="nav_002">
-						<ul class="ul">
-							<li><a href="javascript:;" class="underlined">Team</a></li>
-							<li><a href="javascript:;" class="underlined">Kontakt</a></li>
-							<li><a href="javascript:;" class="underlined">Betriebsverein</a></li>
-						</ul>
-					</div>
-					<div class="spacing_175"></div>
-					<div class="divider"></div>
-					<div class="spacing_175"></div>
-					<ul class="ul">
-						<li><text>Zirkus Schule Basel</text></li>
-						<li><text>Dornacherstr. 192</text></li>
-						<li><text>CH-4053 Basel</text></li>
-						<div class="spacing_175"></div>
-						<li><text>Tel. +41 61 331 27 70</text></li>
-					</ul>
-				</div>
-				<div class="footer">
-					<a href="javascript:;">
-						<img src="docs/docs_logo.png" width="100%" height="auto" title="" alt="">
-					</a>
-				</div>
-			</div>
-			<div class="main">
-				<div class="clear">
-				</div>
-				<div class="blue">
-					<div class="title">
-						Zirkus Schule Basel
-					</div>
-					<div class="spacing"></div>
-					<div class="spacing"></div>
-					<div class="divider"></div>
-					<div class="spacing"></div>
-					<div class="text">
-						Seit über 25 Jahren bietet die Zirkus Schule Basel Kindern, Jugendlichen und Erwachsenen den Raum, die Vielfalt der Zirkuskünste zu erleben. Mit Freude und nach eigenem Tempo und Vermögen erlernen sie Bewegungsabläufe und entwickeln so Körpergefühl, Selbstvertrauen und Selbstbewusstsein. Unser Team qualifizierter Lehrpersonen bietet Kurse in Akrobatik und Artistik für AnfängerInnen bis Fortgeschrittene an. In Workshops und Ferienkursen können Interessierte erste Erfahrungen sammeln oder Fähigkeiten vertiefen. Die Zirkus Schule Basel steht als Freizeitschule allen offen. Jedes Jahr finden auf dem Gundeldinger Feld mit allen Schülerinnen und Schülern der Zirkus Schule Basel Aufführungen vor Publikum statt, bei denen sie ihr erlerntes Können präsentieren. Die Zirkus Schule Basel ist Mitglied im Verband schweizerischer Zirkusschulen. 
-					</div>
-				</div>
-				<div class="clear">
-				</div>
-				<div class="blue">
-					<div class="title">
-						Zirkus Rägeboge
-					</div>
-					<div class="spacing" style="margin: 2.25px 0px 0px 0px"></div>
-					<div class="divider"></div>
-					<div class="spacing"></div>
-					<div class="text">
-						Der Zirkus Rägeboge bietet eine besondere Herausforderung innerhalb der Zirkus Schule Basel. Er steht allen Kindern und Jugendlichen von 9 - 17 Jahren offen, die eine Grundausbildung an der Zirkus Schule absolviert haben. Die Truppe von etwa 30 Kindern und Jugendlichen trainieren unter der professionellen Leitung von Carina Ott und Jonas Althaus. Gemeinsam wird jedes Jahr ab Sommer ein Programm unter einem selbstgewählten Thema auf die Beine gestellt. Die öffentlichen Aufführungen finden dann im Frühjahr in einer ehemaligen Fabrikhalle auf dem Gundeldinger Feld statt. 
-					</div>
-				</div>
-				<div class="clear">
-				</div>
-			</div>
-		</div>
-		<div class="mobile">
-
-		</div>
-				-->
 		<script src="docs/js/bootstrap.bundle.min.js">
 		</script>
 	</body>
