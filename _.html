@@ -184,48 +184,19 @@
 					padding: 17.5px 17.5px 17.5px 192.5px;
 				}
 /*	-----	UNCLEANED	-----	*/
-li, ul label.title, ul, a {
-	width: 100%;
-	display: block;
-	
-}
-ul label {
-	height: 17.5px;
-}
-ul li{
-	height: 35px;
-	overflow: hidden;
-	transition: all .3s;
-	
-}
-label.title {
-font-size: 16px;
-line-height: 17.5px;
-	padding: 8.25px 8.25px;
-	cursor: pointer;
-  transition: all .25s;
-}
-a{
-	font-size: 12px;
-	line-height: 17.5px;
-	text-decoration: none;
-	color: #FFF;
-	display: block;
-	padding: 8.25px 8.25px 8.25px 17.5px;
-	transition: all .25s;
-}
-a:hover, label:hover
-{
-	color: #d67e26;
-}
-#edit:checked + li, #archive:checked + li, #tools:checked + li, #preferences:checked + li {
-	height: calc(4 * 35px);
-}
-input[type="radio"]
-{
-	display: none;
-}
-				label::before
+				.button
+				{
+					display: inline-flex;
+					align-items: center;
+					border: none;
+					font-size: 16px;
+					line-height: 17.5px;
+				}
+				.button:hover
+				{
+					color: #d67e26;
+				}
+				.button::before
 				{
 					line-height: 0;
 					content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='white' stroke-linecap='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
@@ -233,10 +204,39 @@ input[type="radio"]
 					transform-origin: .5em 50%;
 					margin: 0px 8.75px 0px 0px;
 				}
-				label[aria-expanded="true"]::before
+				.button[aria-expanded="true"]::before
 				{
 					transform: rotate(90deg);
 				}
+				.collapse:not(.show)
+				{
+					display:none
+				}
+				.collapsing
+				{
+					height: 0;
+					overflow: hidden;
+					transition: .35s ease
+				}
+				.underlined:hover
+				{
+					color: #d67e26;
+				}
+				.ul a
+				{
+					display: inline-flex;
+					padding: 8.75px 0px 0px 8.75px;
+					text-decoration: none;
+				}
+				.content
+				{
+					height: 100vh;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					color: white;
+				}
+
 /*	-----	UNCLEANED	-----	*/
 			}
 		</style>
@@ -248,34 +248,52 @@ input[type="radio"]
 				<map name="logo">
 					<area shape="rect" coords="0,0,1097,1322" href="javascript:;" title="" alt="">
 				</map>
-				<div class="spacing_175"></div>
+				<div class="nav" id="desktop">
 <!--	-----	UNCLEANED	-----	-->
-				<div class="nav" id="desktop" style="background-color:red">
-					<ul>
-						<input class="button" type="radio" name="menu" id="archive" style="background-color:green">
-						<li>
-							<label for="archive" class="title" style="background-color:blue">Kursangebote</label>
-							<a href="#" style="background-color:green">Jugendliche</a>
-							<a href="#">Erwachsene</a>
-							<a href="#">Ferienkurse</a>
-							<a href="#">Workshops</a>
-						</li>
-						<input class="button" type="radio" name="menu" id="edit">
-						<li>
-							<label for="edit" class="title">Zirkus Rägeboge</label>
-							<a href="#">000</a>
-							<a href="#">001</a>
-							<a href="#">002</a>
-						</li>
-						<input class="button" type="radio" name="menu" id="tools">
-						<li>
-							<label for="tools" class="title">Über uns</label>
-							<a href="#">000</a>
-							<a href="#">001</a>
-							<a href="#">002</a>
-						</li>
-					</ul>
-				</div>
+					<div class="spacing_175"></div>
+					<div class="divider"></div>
+					<div class="spacing_175"></div>
+					<button class="button" data-bs-toggle="collapse" data-bs-target="#nav_000" aria-expanded="false" aria-controls="nav_000">
+						Kursangebote
+					</button>
+					<div class="collapse" id="nav_000">
+						<ul class="ul">
+							<li><a href="javascript:;" class="underlined">Jugendliche</a></li>
+							<li><a href="javascript:;" class="underlined">Erwachsene</a></li>
+							<li><a href="javascript:;" class="underlined">Ferienkurse</a></li>
+							<li><a href="javascript:;" class="underlined">Workshops</a></li>
+						</ul>
+					</div>
+					<div class="spacing_175"></div>
+					<div class="divider"></div>
+					<div class="spacing_175"></div>
+					<button class="button" data-bs-toggle="collapse" data-bs-target="#nav_001" aria-expanded="false">
+						Zirkus Rägeboge
+					</button>
+					<div class="collapse" id="nav_001">
+						<ul class="ul">
+							<li><a href="javascript:;" class="underlined">"Hui oder Pfui"</a></li>
+							<li><a href="javascript:;" class="underlined">"Unterwegs"</a></li>
+							<div class="spacing_175"></div>
+							<li><a href="javascript:;" class="underlined">Aufführungen</a></li>
+							<li><a href="javascript:;" class="underlined">Teilnahme</a></li>
+							<li><a href="javascript:;" class="underlined">Leitbild</a></li>
+							<li><a href="javascript:;" class="underlined">Presse</a></li>
+						</ul>
+					</div>
+					<div class="spacing_175"></div>
+					<div class="divider"></div>
+					<div class="spacing_175"></div>
+					<button class="button" data-bs-toggle="collapse" data-bs-target="#nav_002" aria-expanded="false">
+						Informationen
+					</button>
+					<div class="collapse" id="nav_002">
+						<ul class="ul">
+							<li><a href="javascript:;" class="underlined">Team</a></li>
+							<li><a href="javascript:;" class="underlined">Kontakt</a></li>
+							<li><a href="javascript:;" class="underlined">Betriebsverein</a></li>
+						</ul>
+					</div>
 <!--	-----	UNCLEANED	-----	-->
 				</div>
 			</div>
@@ -291,14 +309,14 @@ input[type="radio"]
 				</ul>
 			</div>
 		</div>
-		<div class="main">
+        <div class="main">
 			<div class="title">
 				main
 			</div>
 			<div class="text">
 				main
 			</div>
-		</div>
+        </div>
 		<script src="docs/js/bootstrap.bundle.min.js">
 		</script>
 	</body>
