@@ -91,6 +91,7 @@
 				color: rgba(255, 255, 255, .2);
 				border-style: solid none none none;
 				border-width: .5px;
+				padding: 17.5px 17.5px 17.5px 17.5px;
 			}
 			.sidebar
 			{
@@ -166,8 +167,6 @@
 				{
 					background-color: inherit;
 					display: block;
-
-					padding: 17.5px 17.5px 17.5px 17.5px;
 				}
 				.footer
 				{
@@ -177,7 +176,7 @@
 				{
 					background-color: inherit;
 					width: 105px;
-					margin: 17.5px 17.5px 17.5px 17.5px;
+					margin: 35px 35px 35px 35px;
 				}
 				.main
 				{
@@ -205,11 +204,13 @@ line-height: 17.5px;
 	cursor: pointer;
   transition: all .25s;
 }
-a{
+
+a
+{
 	font-size: 12px;
-	line-height: 17.5px;
+	line-height: 13.125px;
 	text-decoration: none;
-	color: #FFF;
+	color: white;
 	display: block;
 	padding: 8.25px 8.25px 8.25px 17.5px;
 	transition: all .25s;
@@ -218,8 +219,17 @@ a:hover, label:hover
 {
 	color: #d67e26;
 }
-#edit:checked + li, #archive:checked + li, #tools:checked + li, #preferences:checked + li {
-	height: calc(4 * 35px);
+#nav_000:checked + li
+{
+	height: calc(calc(4 * 30.625px) + 30.625px);
+}
+#nav_001:checked + li
+{
+	height: calc(calc(3 * 30.625px) + 30.625px);
+}
+#nav_002:checked + li
+{
+	height: calc(calc(2 * 30.625px) + 30.625px);
 }
 input[type="radio"]
 {
@@ -237,6 +247,12 @@ input[type="radio"]
 				{
 					transform: rotate(90deg);
 				}
+				#archive:checked + label::before
+				{
+					transform: rotate(90deg);
+				}
+
+
 /*	-----	UNCLEANED	-----	*/
 			}
 		</style>
@@ -248,31 +264,32 @@ input[type="radio"]
 				<map name="logo">
 					<area shape="rect" coords="0,0,1097,1322" href="javascript:;" title="" alt="">
 				</map>
-				<div class="spacing_175"></div>
 <!--	-----	UNCLEANED	-----	-->
-				<div class="nav" id="desktop" style="background-color:red">
+				<div class="nav" id="desktop">
 					<ul>
-						<input class="button" type="radio" name="menu" id="archive" style="background-color:green">
+						<svg id="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" stroke-linecap="round" stroke-width="2">
+							<path d="M5 14l6-6-6-6"></path>
+						</svg>
+						<input class="button" type="radio" name="menu" id="nav_000">
 						<li>
-							<label for="archive" class="title" style="background-color:blue">Kursangebote</label>
-							<a href="#" style="background-color:green">Jugendliche</a>
-							<a href="#">Erwachsene</a>
-							<a href="#">Ferienkurse</a>
-							<a href="#">Workshops</a>
+							<label for="nav_000" class="title">Kursangebote</label>
+							<a href="javascript:;">Jugendliche</a>
+							<a href="javascript:;">Erwachsene</a>
+							<a href="javascript:;">Ferienkurse</a>
+							<a href="javascript:;">Workshops</a>
 						</li>
-						<input class="button" type="radio" name="menu" id="edit">
+						<input class="button" type="radio" name="menu" id="nav_001">
 						<li>
-							<label for="edit" class="title">Zirkus Rägeboge</label>
-							<a href="#">000</a>
-							<a href="#">001</a>
-							<a href="#">002</a>
+							<label for="nav_001" class="title">Zirkus Rägeboge</label>
+							<a href="javascript:;">000</a>
+							<a href="javascript:;">001</a>
+							<a href="javascript:;">002</a>
 						</li>
-						<input class="button" type="radio" name="menu" id="tools">
+						<input class="button" type="radio" name="menu" id="nav_002">
 						<li>
-							<label for="tools" class="title">Über uns</label>
-							<a href="#">000</a>
-							<a href="#">001</a>
-							<a href="#">002</a>
+							<label for="nav_002" class="title">Über uns</label>
+							<a href="javascript:;">000</a>
+							<a href="javascript:;">001</a>
 						</li>
 					</ul>
 				</div>
@@ -281,8 +298,6 @@ input[type="radio"]
 			</div>
 			<div class="footer">
 				<ul class="ul">
-					<div class="divider" id="desktop"></div>
-					<div class="spacing_175" id="desktop"></div>
 					<li><div class="text">Zirkus Schule Basel</div></li>
 					<li><div class="text">Dornacherstr. 192</div></li>
 					<li><div class="text">CH-4053 Basel</div></li>
@@ -299,7 +314,32 @@ input[type="radio"]
 				main
 			</div>
 		</div>
-		<script src="docs/js/bootstrap.bundle.min.js">
+		    <script>
+        function display() { 
+            var checkRadio = document.querySelector(
+                'input[name="GFG"]:checked');
+              
+            if(checkRadio != null) {
+                document.getElementById("disp").innerHTML
+                    = checkRadio.value
+                    + " radio button checked";
+            }
+            else {
+                document.getElementById("disp").innerHTML
+                    = "No one selected";
+            }
+        }
+    </script>
+		<script>
+			const radioButtons = document.querySelectorAll('input[name="menu"]');
+			btn.addEventListener("click", () => {
+				let selectedSize;
+				for (const radioButton of radioButtons) {
+					if (radioButton.checked) {
+						document.getElementById("arrow").style.transform = "rotate(90deg)";
+					}
+				}
+			});
 		</script>
 	</body>
 </html>
