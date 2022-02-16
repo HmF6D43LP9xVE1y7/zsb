@@ -65,23 +65,11 @@
 				width: 100%;
 				height: 100vh;
 			}
-			.spacing_825
-			{
-				background-color: transparent;
-				display: block;
-				height: 8.25px;
-			}
 			.spacing_175
 			{
 				background-color: transparent;
 				display: block;
 				height: 17.5px;
-			}
-			.spacing_350
-			{
-				background-color: transparent;
-				display: block;
-				height: 35px;
 			}
 			.divider
 			{
@@ -91,7 +79,8 @@
 				color: rgba(255, 255, 255, .2);
 				border-style: solid none none none;
 				border-width: .5px;
-				padding: 17.5px 17.5px 17.5px 17.5px;
+				padding: 0px 0px 8.25px 0px;
+				margin: 8.25px 17.5px 0px 17.5px;
 			}
 			.sidebar
 			{
@@ -161,7 +150,7 @@
 				.sidebar
 				{
 					background-color: #203388;
-					width: 175px;
+					width: 185px;
 				}
 				.header, .footer
 				{
@@ -176,65 +165,50 @@
 				{
 					background-color: inherit;
 					width: 105px;
-					margin: 35px 35px 35px 35px;
+					margin: 35px 35px 26.75px 35px;
 				}
 				.main
 				{
-					padding: 17.5px 17.5px 17.5px 192.5px;
+					padding: 17.5px 17.5px 17.5px 202.5px;
 				}
-
-
-/*
-				label::before
-				{
-					line-height: 0;
-					content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='white' stroke-linecap='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
-					transition: .35s ease;
-					transform-origin: .5em 50%;
-					margin: 0px 8.75px 0px 0px;
-				}
-				input[type=radio]:checked+label[class=title]::before
-				{
-					transform: rotate(90deg);
-				}
-/*
-				input[type="radio"]:checked  shows radio when selected, :after or ::before needed to target svg 
-				{
-					display: block;
-					transform: rotate(90deg);
-				}
-*/
 /*	-----	UNCLEANED	-----	*/
-li, ul label.title, ul, a {
-	width: 100%;
-	display: block;
-	
-}
-ul label {
-	height: 17.5px;
-}
-ul li{
+.nav_000, .nav_001, .nav_002
+{
 	height: 35px;
-	overflow: hidden;
 	transition: all .3s;
-	
+	overflow: hidden;
 }
-label.title {
-font-size: 16px;
-line-height: 17.5px;
-	padding: 8.25px 8.25px;
-	cursor: pointer;
-  transition: all .25s;
+#nav_000:checked + .nav_000
+{
+	height: calc(calc(4 * 35px) + 35px);
+	transition: all .3s;
+	overflow: hidden;
 }
-
+#nav_001:checked + .nav_001
+{
+	height: calc(calc(7 * 35px) + 35px);
+	transition: all .3s;
+	overflow: hidden;
+}
+#nav_002:checked + .nav_002
+{
+	height: calc(calc(3 * 35px) + 35px);
+	transition: all .3s;
+	overflow: hidden;
+}
+input[type="radio"]
+{
+	display: none;
+}
 a
 {
-	font-size: 12px;
-	line-height: 13.125px;
+	font-size: 16px;
+	line-height: 17.5px;
+	display: block;
+	padding: 8.25px 8.25px 8.25px 0px;
+
 	text-decoration: none;
 	color: white;
-	display: block;
-	padding: 8.25px 8.25px 8.25px 17.5px;
 	transition: all .25s;
 }
 a:hover, label:hover
@@ -242,62 +216,26 @@ a:hover, label:hover
 	color: #d67e26;
 	cursor: pointer;
 }
-#nav_000:checked + a
+label
 {
-	height: calc(calc(4 * 30.625px) + 30.625px);
+	display: block;
+	font-size: 16px;
+	line-height: 17.5px;
+	padding: 8.25px 8.25px 8.25px 26.75px;
 }
-#nav_001:checked + li
+svg
 {
-	height: calc(calc(3 * 30.625px) + 30.625px);
+	position: fixed;
+	height: 35px;
+	width: 17.5px;
+	margin: 0px 0px 0px 17.5px;
+	transition: .35s ease;
 }
-#nav_002:checked + li
+.nav
 {
-	height: calc(calc(2 * 30.625px) + 30.625px);
+	margin: 0px 17.5px 0px 17.5px;
 }
-#nav_003:checked + li
-{
-	height: calc(calc(2 * 30.625px) + 30.625px);
-}
-#button000:checked + li
-{
-	height: calc(calc(2 * 30.625px) + 30.625px);
-}
-#button010:checked + li
-{
-	height: calc(calc(2 * 30.625px) + 30.625px);
-}
-input[type="radio"]
-{
-	display: none;
-}
-
-
-				input[type="radio"]
-				{
-					display: none;
-				}
-				:checked + svg
-				{
-					transform: rotate(90deg);
-				}
-				svg
-				{
-					transition: .35s ease;
-				}
-				.list
-				{
-					height:0px;
-					overflow: hidden;
-					transition: all .3s;
-				}
-				#input_000:checked + .list
-				{
-					height: calc(2 * 30.625px);
-				}
-
-				
 /*	-----	UNCLEANED	-----	*/
-
 			}
 		</style>
 	</head>
@@ -308,79 +246,61 @@ input[type="radio"]
 				<map name="logo">
 					<area shape="rect" coords="0,0,1097,1322" title="" alt="">
 				</map>
-<!--	-----	UNCLEANED	-----	-->
-				<div class="nav" id="desktop">
-					<ul>
-						<svg class="arrow" id="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" stroke-linecap="round" stroke-width="2">
-							<path d="M5 14l6-6-6-6"></path>
-						</svg>
-						<input class="button" type="radio" name="menu" id="input_000">
-						<div class="list">
-							<a href="javascript:;">000</a>
-							<a href="javascript:;">001</a>
-						</div>
-						<li>
-							<label for="input_000" class="title">menu_000</label>
-						</li>
-
-
-
-
-
-
-
-
-
-
-						<input class="button" type="radio" name="menu" id="nav_000">
-						<svg class="arrow" id="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" stroke-linecap="round" stroke-width="2">
-							<path d="M5 14l6-6-6-6"></path>
-						</svg>
-						<label for="nav_000" >menu_001</label>
-						<li>
+				<div id="desktop">
+					<div class="divider"></div>
+					<svg id="nav_000_svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" stroke-linecap="round" stroke-width="1.5">
+						<path d="M5 14l6-6-6-6"></path>
+					</svg>
+					<div class="nav">
+						<input type="radio" name="input" value="input_000" id="nav_000">
+						<div class="nav_000">
+							<label class="text" for="nav_000">Kursangebote</label>
 							<a href="javascript:;">Jugendliche</a>
 							<a href="javascript:;">Erwachsene</a>
 							<a href="javascript:;">Ferienkurse</a>
 							<a href="javascript:;">Workshops</a>
-						</li>
-						
-						<input class="button" type="radio" name="menu" id="nav_001">
-						<svg class="arrow" id="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" stroke-linecap="round" stroke-width="2">
-							<path d="M5 14l6-6-6-6"></path>
-						</svg>
-						<li>
-							<label for="nav_001" class="title">menu_002</label>
-							<a href="javascript:;">000</a>
-							<a href="javascript:;">001</a>
-							<a href="javascript:;">002</a>
-						</li>
-
-
-							<input class="button" type="radio" name="menu" id="nav_002">
-							<li>
-								<label for="nav_002" class="title">menu_003</label>
-								<a href="javascript:;">000</a>
-								<a href="javascript:;">001</a>
-							</li>
-							<input class="button" type="radio" name="menu" id="nav_010">
-							<li>
-								<label for="nav_010" class="title">menu_003</label>
-								<a href="javascript:;">000</a>
-								<a href="javascript:;">001</a>
-							</li>
-						
-					</ul>
-				</div>
-<!--	-----	UNCLEANED	-----	-->
+						</div>
+					</div>
+					<div class="divider"></div>
+					<svg id="nav_001_svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" stroke-linecap="round" stroke-width="1.5">
+						<path d="M5 14l6-6-6-6"></path>
+					</svg>
+					<div class="nav">
+						<input type="radio" name="input" value="input_001" id="nav_001">
+						<div class="nav_001">
+							<label class="text" for="nav_001">Zirkus Rägeboge</label>
+							<a href="javascript:;">"Hui oder Pfui"</a>
+							<a href="javascript:;">"Unterwegs"</a>
+							<div class="spacing_175"></div>
+							<a href="javascript:;">Aufführungen</a>
+							<a href="javascript:;">Teilnahme</a>
+							<a href="javascript:;">Leitbild</a>
+							<a href="javascript:;">Presse</a>
+						</div>
+					</div>
+					<div class="divider"></div>
+					<svg id="nav_002_svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" stroke-linecap="round" stroke-width="1.5">
+						<path d="M5 14l6-6-6-6"></path>
+					</svg>
+					<div class="nav">
+						<input type="radio" name="input" value="input_002" id="nav_002">
+						<div class="nav_002">
+							<label class="text" for="nav_002">Informationen</label>
+							<a href="javascript:;">Team</a>
+							<a href="javascript:;">Kontakt</a>
+							<a href="javascript:;">Betriebsverein</a>
+						</div>
+					</div>
+					<div class="divider"></div>
 				</div>
 			</div>
 			<div class="footer">
 				<ul class="ul">
-					<li><div class="text">Zirkus Schule Basel</div></li>
-					<li><div class="text">Dornacherstr. 192</div></li>
-					<li><div class="text">CH-4053 Basel</div></li>
+					<div class="text">Zirkus Schule Basel</div>
+					<div class="text">Dornacherstr. 192</div>
+					<div class="text">CH-4053 Basel</div>
 					<div class="spacing_175"></div>
-					<li><div class="text">+41 61 331 27 70</div></li>
+					<div class="text">+41 61 331 27 70</div>
 				</ul>
 			</div>
 		</div>
@@ -392,78 +312,33 @@ input[type="radio"]
 				main
 			</div>
 		</div>
-<!--
-
-
-						<script>
-
-						function rotate()
-						{
-							document.getElementsByTagName('arrow').style.rotate = '90deg';
-						}
-									
-
-					</script>
-
-						function rotate()
-						{
-							document.getElementById('arrow').style.rotate = '90deg';
-						}
-						$(document).ready(function()
-						{
-							$('label::before').click(function()
-							{
-								document.getElementById('arrow').style.rotate = '90deg';
-								$('label').removeClass('rotation');
-								$(this).addClass('rotation');
-							});
-						});
-
-
-		    <script>
-        function display() { 
-            var checkRadio = document.querySelector(
-                'input[name="GFG"]:checked');
-              
-            if(checkRadio != null) {
-                document.getElementById("disp").innerHTML
-                    = checkRadio.value
-                    + " radio button checked";
-            }
-            else {
-                document.getElementById("disp").innerHTML
-                    = "No one selected";
-            }
-        }
-    </script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="docs/js/jquery.min.js"></script>
 		<script>
-			const radioButtons = document.querySelectorAll('input[name="menu"]');
-			btn.addEventListener("click", () => {
-				let selectedSize;
-				for (const radioButton of radioButtons) {
-					if (radioButton.checked) {
-						document.getElementById("arrow").style.transform = "rotate(90deg)";
+			$(document).ready(function()
+			{
+				$('input:radio[name="input"]').change(function()
+				{
+					if ($(this).val() == 'input_000')
+					{
+						document.getElementById('nav_000_svg').style.rotate = '90deg';
+						document.getElementById('nav_001_svg').style.rotate = '0deg';
+						document.getElementById('nav_002_svg').style.rotate = '0deg';
 					}
-				}
+					if ($(this).val() == 'input_001')
+					{
+						document.getElementById('nav_000_svg').style.rotate = '0deg';
+						document.getElementById('nav_001_svg').style.rotate = '90deg';
+						document.getElementById('nav_002_svg').style.rotate = '0deg';
+					}
+					if ($(this).val() == 'input_002')
+					{
+						document.getElementById('nav_000_svg').style.rotate = '0deg';
+						document.getElementById('nav_001_svg').style.rotate = '0deg';
+						document.getElementById('nav_002_svg').style.rotate = '90deg';
+					}
+				});
 			});
 		</script>
-
-
-		<script>
-			function myFunction()
-			{
-			var checkBox = document.getElementById('nav_000');
-			if (checkBox.checked == true)
-			{
-				document.getElementById("arrow").style.transform = "rotate(90deg)";
-			}
-			else
-			{
-			}
-
-			}
-		</script>
-
-		-->
 	</body>
 </html>
