@@ -178,69 +178,71 @@
 					padding: 17.5px 17.5px 17.5px 202.5px;
 				}
 /*	-----	UNCLEANED	-----	*/
-.nav_000, .nav_001, .nav_002
-{
-	height: 35px;
-	transition: all .3s;
-	overflow: hidden;
-}
-#nav_000:checked + .nav_000
-{
-	height: calc(calc(4 * 35px) + 35px);
-	transition: all .3s;
-	overflow: hidden;
-}
-#nav_001:checked + .nav_001
-{
-	height: calc(calc(4 * 35px) + 35px);
-	transition: all .3s;
-	overflow: hidden;
-}
-#nav_002:checked + .nav_002
-{
-	height: calc(calc(3 * 35px) + 35px);
-	transition: all .3s;
-	overflow: hidden;
-}
-input[type="radio"]
-{
-	display: none;
-}
-a
-{
-	font-size: 16px;
-	line-height: 17.5px;
-	display: block;
-	padding: 8.25px 8.25px 8.25px 0px;
+				svg
+				{
+					position: fixed;
 
-	text-decoration: none;
-	color: white;
-	transition: all .25s;
-}
-a:hover, label:hover
-{
-	color: #d67e26;
-	cursor: pointer;
-}
-label
-{
-	display: block;
-	font-size: 16px;
-	line-height: 17.5px;
-	padding: 8.25px 8.25px 8.25px 26.75px;
-}
-svg
-{
-	position: fixed;
-	height: 35px;
-	width: 17.5px;
-	margin: 0px 0px 0px 17.5px;
-	transition: .35s ease;
-}
-.boxed
-{
-	margin: 0px 17.5px 0px 17.5px;
-}
+					height: 35px;
+					width: 17.5px;
+
+					margin: 0px 0px 0px 17.5px;
+					transition: .35s ease;
+				}
+				.boxed
+				{
+					margin: 0px 17.5px 0px 17.5px;
+				}
+				input[type="radio"]
+				{
+					display: none;
+				}
+				#nav_000:checked + .nav_000
+				{
+					height: calc(calc(5 * 35px) + 35px);
+
+					transition: all .3s;
+					overflow: hidden;
+				}
+				#nav_001:checked + .nav_001
+				{
+					height: calc(calc(4 * 35px) + 35px);
+
+					transition: all .3s;
+					overflow: hidden;
+				}
+				#nav_002:checked + .nav_002
+				{
+					height: calc(calc(3 * 35px) + 35px);
+
+					transition: all .3s;
+					overflow: hidden;
+				}
+				.nav_000, .nav_001, .nav_002
+				{
+					height: 35px;
+
+					transition: all .3s;
+					overflow: hidden;
+				}
+				a, label
+				{
+					display: block;
+
+					padding: 8.25px 8.25px 8.25px 0px;
+
+					font-size: 16px;
+					line-height: 17.5px;
+					transition: all .25s;
+				}
+				label
+				{
+					padding: 8.25px 8.25px 8.25px 26.75px !important;
+				}
+				a:hover, label:hover
+				{
+					color: #d67e26;
+					cursor: pointer;
+				}
 /*	-----	UNCLEANED	-----	*/
 			}
 		</style>
@@ -261,8 +263,9 @@ svg
 						<input type="radio" name="input" value="input_000" id="nav_000">
 						<div class="nav_000">
 							<label class="text" for="nav_000">Kursangebote</label>
-							<a href="javascript:;">Jugendliche</a>
+							<a href="javascript:;">Kinder & Jugendliche</a>
 							<a href="javascript:;">Erwachsene</a>
+							<a href="javascript:;">Samstagstrainings</a>
 							<a href="javascript:;">Ferienkurse</a>
 							<a href="javascript:;">Workshops</a>
 						</div>
