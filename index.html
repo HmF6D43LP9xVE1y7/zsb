@@ -1,445 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="author" content="Dagmar Horstmann">
-		<meta name="description" content="Zirkus Schule Basel">
-		<meta name="keywords" content="Zirkus Schule Basel">
-		<meta name="google-site-verification" content="xSkSBxSqVInMOVCsHo_F6kJqnmHd_l0r-AQa3zJwH3k">
-		<meta name="robots" content="nofollow, noimageindex">
-		<meta name="googlebot" content="nofollow, noimageindex">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" type="image/png" href="docs/docs_favicon.png">
-		<title>
-			Zirkus Schule Basel
-		</title>
-		<style>
-			@font-face
-			{
-				font-family: 'font';
-				src: url('docs/font/docs_font.eot');
-				src: url('docs/font/docs_font.eot?#iefix') format('embedded-opentype'),
-					url('docs/font/docs_font.woff2') format('woff2'),
-					url('docs/font/docs_font.woff') format('woff'),
-					url('docs/font/docs_font.ttf') format('truetype'),
-					url('docs/font/docs_font.svg#d-dinregular') format('svg');
-				font-weight: normal;
-				font-style: normal;
-			}
-			::-webkit-scrollbar
-			{
-				display: none;
-			}
-			*
-			{
-				background-color: transparent;
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            toggleable
+        </title>
+        <style>
+            @font-face {
+                font-family: 'font';
+                src: url('docs/font/font.eot');
+                src: url('docs/font/font.eot?#iefix') format('embedded-opentype'),
+                    url('docs/font/font.woff2') format('woff2'),
+                    url('docs/font/font.woff') format('woff'),
+                    url('docs/font/font.ttf') format('truetype'),
+                    url('docs/font/font.svg#d-dinregular') format('svg');
+                font-weight: normal;
+                font-style: normal;
+            }
+            ::-webkit-scrollbar {
+                display: none;
+            }
+            * {
+                background-color: transparent;
 
-				right: 0px;
-				left: 0px;
-				padding: 0;
-				margin: 0;
+                padding: 0;
+                margin: 0;
 
-				-ms-overflow-style: none;
-				scrollbar-width: none;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
 
-				-webkit-user-select: none;
-				-webkit-touch-callout: none;
-				-moz-user-select: none;
-				-ms-user-select: none;
-				user-select: none;
+                -webkit-user-select: none;
+                -webkit-touch-callout: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
 
-				font-family: "font";
-				text-transform: none;
-				text-decoration: none;
-				color: white;
+                font-family: "font";
+                text-transform: lowercase;
+                text-decoration: none;
+                line-height: 1.2;
+                color: black;
+            }
+            .main {
+                height: calc(100vh - 140px);
+                margin: 0px 0px 35px 35px;
+                overflow: scroll;
+            }
+            .column_left {
+                display: block;
+                position: absolute;
+            }
+            .column_right {
+                display: block;
+                position: absolute;
+            }
+            .cube {
+                background-color: rgba(195, 195, 195, 0.35);
 
-				list-style: none;
-			}
-			body
-			{
-				background: url('docs/docs_background.png');
-				background-position: center center;
-				background-size: cover !important;
-				background-attachment: fixed;
+                box-shadow: 10px 10px 10px rgba(100, 100, 100, .35);
+                border-radius: 17.5px 17.5px 17.5px 17.5px;
 
-				width: 100%;
-				height: 100vh;
-			}
-			.spacing_825
-			{
-				background-color: transparent;
-				display: block;
-				height: 8.25px;
-			}
-			.spacing_175
-			{
-				background-color: transparent;
-				display: block;
-				height: 17.5px;
-			}
-			.divider
-			{
-				background-color: transparent;
-				display: block;
+                font-size: 17.5px;
+                line-height: 35px;
+            }
+            .spacing_350 {
+                background-color: inherit;
+                display: block;
+                height: 125px;
+            }
+            .slide-in_a {
+                margin: 35px 35px 35px 0px;
 
-				color: rgba(255, 255, 255, .2);
-				border-style: solid none none none;
-				border-width: .5px;
-				margin: 8.25px 0px 8.25px 0px;
-			}
-			.sidebar
-			{
-				background: url('docs/docs_background_blurred.png');
-				background-position: center center;
-				background-size: cover !important;
-				background-attachment: fixed;
+                opacity: 0;
+                -webkit-animation: slidein 1s ease 0s forwards;
+                -moz-animation: slidein 1s ease 0s forwards;
+                -o-animation: slidein 1s ease 0s forwards;
+                animation: slidein 1s ease 0s forwards;
+            }
+            .slide-in_b {
+                margin: 35px 35px 35px 0px;
 
-				background-color: transparent;
-				position: fixed;
-				display: block;
+                opacity: 0;
+                -webkit-animation: slidein 1s ease .1s forwards;
+                -moz-animation: slidein 1s ease .1s forwards;
+                -o-animation: slidein 1s ease .1s forwards;
+                animation: slidein 1s ease .1s forwards;
+            }
+            .slide-in_c {
+                margin: 35px 35px 35px 0px;
 
-				height: 100%;
-			}
-			.header, .footer
-			{
-				background: url('docs/docs_background_blurred.png');
-				background-position: center center;
-				background-size: cover !important;
-				background-attachment: fixed;
+                opacity: 0;
+                -webkit-animation: slidein 1s ease .2s forwards;
+                -moz-animation: slidein 1s ease .2s forwards;
+                -o-animation: slidein 1s ease .2s forwards;
+                animation: slidein 1s ease .2s forwards;
+            }
+            .slide-in_d {
+                margin: 35px 35px 35px 0px;
 
-				background-color: inherit;
-			}
-			.footer
-			{
-				position: absolute;
-				bottom: 0px;
-			}
-			.main
-			{
-				background-color: transparent;
-			}
-			.box
-			{
-				background-color: #203388;
+                opacity: 0;
+                -webkit-animation: slidein 1s ease .3s forwards;
+                -moz-animation: slidein 1s ease .3s forwards;
+                -o-animation: slidein 1s ease .3s forwards;
+                animation: slidein 1s ease .3s forwards;
+            }
+            .slide-in_e {
+                margin: 35px 35px 35px 0px;
 
-				box-shadow: 0px 0px 17.5px rgba(0, 0, 0, .2);
-				/*
-				border-radius: 17.5px 17.5px 17.5px 17.5px;
-				*/
-				padding: 17.5px;
-			}
-			.title
-			{
-				font-size: 32px;
-				line-height: 35px;
-			}
-			.text
-			{
-				font-size: 16px;
-				line-height: 17.5px;
-			}
-			.image
-			{
-				background: url('docs/docs_flyer.jpg');
-				background-position: center center;
-				background-size: cover !important;
-				background-attachment: fixed;
-			}
-			@media screen and (max-width: 600px)
-			{
-				.desktop, #desktop
-				{
+                opacity: 0;
+                -webkit-animation: slidein 1s ease .4s forwards;
+                -moz-animation: slidein 1s ease .4s forwards;
+                -o-animation: slidein 1s ease .4s forwards;
+                animation: slidein 1s ease .4s forwards;
+            }
+            .slide-in_f {
+                margin: 35px 35px 35px 0px;
+
+                opacity: 0;
+                -webkit-animation: slidein 1s ease .5s forwards;
+                -moz-animation: slidein 1s ease .5s forwards;
+                -o-animation: slidein 1s ease .5s forwards;
+                animation: slidein 1s ease .5s forwards;
+            }
+            @-webkit-keyframes slidein {
+                0% {
+                    transform: translateY(35px);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateY(0px);
+                    opacity: 1;
+                }
+            }
+            @-moz-keyframes slidein {
+                0% {
+                    transform: translateY(35px);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateY(0px);
+                    opacity: 1;
+                }
+            }
+            @-o-keyframes slidein {
+                0% {
+                    transform: translateY(35px);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateY(0px);
+                    opacity: 1;
+                }
+            }
+            @keyframes slidein {
+                0% {
+                    transform: translateY(35px);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateY(0px);
+                    opacity: 1;
+                }
+            }
+            .img {
+                max-width: 100%;
+
+                background-size: cover;
+                background-position: center; /* top, 0px -35px; */
+                
+                border-radius: 17.5px 17.5px 17.5px 17.5px;
+            }
+            #img_jonas {
+                background-image: url('docs/tim_ott_2019_08_portraits_zsb_000.jpg');
+            }
+            #img_dagmar {
+                background-image: url('docs/tim_ott_2019_08_portraits_zsb_005.jpg');
+            }
+            #img_carina {
+                background-image: url('docs/tim_ott_2019_08_portraits_zsb_004.jpg');
+            }
+            .font {
+                padding: 35px 0px 0px 35px;
+            }
+            @media screen and (max-width: 600px) {
+				.desktop, #desktop {
 					display: none !important;
 				}
-				.sidebar
-				{
-					background-color: transparent;
-				}
-				.header, .footer
-				{
-					background-color: #203388;
-					display: flex;
-
-					padding: 17.5px 17.5px 17.5px 17.5px;
-				}
-				.header
-				{
-					box-shadow: 0px 10px 10px rgba(0, 0, 0, .2);
-				}
-				.footer
-				{
-					box-shadow: 0px -10px 10px rgba(0, 0, 0, .2);
-				}
-				.header img
-				{
-					background-color: transparent;
-					width: 65px;
-					margin: 8.25px 8.25px 8.25px 8.25px;
-				}
-				.main
-				{
-					padding: 147.333px 17.5px 17.5px 17.5px;
-				}
+                .column_right {
+                    margin: 140px 0px 0px 170px;
+                }
+                .cube {
+                    width: calc(calc(100vw / 2) - 100px);
+                    height: 350px;
+                }
+                .img {
+                    height: 250px;
+                }
 			}
-			@media screen and (min-width: 601px)
-			{
-				.mobile, #mobile
-				{
+			@media screen and (min-width: 601px) {
+				.mobile, #mobile {
 					display: none !important;
 				}
-				.sidebar
-				{
-					background-color: #203388;
-					box-shadow: 0px 0px 17.5px rgba(0, 0, 0, .2);
-					width: 185px;
-				}
-				.header, .footer
-				{
-					background-color: inherit;
-					display: block;
-				}
-				.footer
-				{
-					margin: 17.5px 0px 35px 0px;
-				}
-				.header img
-				{
-					background: url('docs/docs_background_blurred.png');
-					background-position: center center;
-					background-size: cover !important;
-					background-attachment: fixed;
-
-					background-color: inherit;
-					width: 105px;
-					margin: 35px 35px 26.75px 35px;
-				}
-				.header .divider
-				{
-					margin: 8.25px 17.5px 8.25px 17.5px;
-				}
-				.main
-				{
-					padding: 156.283px calc(100vw - 715px) 17.5px 202.5px;
-				}
-/*	-----	UNCLEANED	-----	*/
-				svg
-				{
-					position: fixed;
-
-					height: 35px;
-					width: 17.5px;
-
-					margin: 0px 0px 0px 17.5px;
-					transition: .35s ease;
-				}
-				.boxed
-				{
-					margin: 0px 17.5px 0px 17.5px;
-				}
-				input[type="radio"]
-				{
-					display: none;
-				}
-				#nav_000:checked + .nav_000
-				{
-					height: calc(calc(5 * 35px) + 35px);
-
-					transition: all .3s;
-					overflow: hidden;
-				}
-				#nav_001:checked + .nav_001
-				{
-					height: calc(calc(4 * 35px) + 35px);
-
-					transition: all .3s;
-					overflow: hidden;
-				}
-				#nav_002:checked + .nav_002
-				{
-					height: calc(calc(3 * 35px) + 35px);
-
-					transition: all .3s;
-					overflow: hidden;
-				}
-				.nav_000, .nav_001, .nav_002
-				{
-					height: 35px;
-
-					transition: all .3s;
-					overflow: hidden;
-				}
-				a, label
-				{
-					display: block;
-
-					padding: 8.25px 8.25px 8.25px 0px;
-
-					font-size: 16px;
-					line-height: 17.5px;
-					transition: all .25s;
-				}
-				label
-				{
-					padding: 8.25px 8.25px 8.25px 26.75px !important;
-				}
-				a:hover, label:hover
-				{
-					color: #203388;
-					cursor: pointer;
-				}
-/*	-----	UNCLEANED	-----	*/
+                .column_right {
+                    margin: 140px 0px 0px 570px;
+                }
+                .img {
+                    height: 500px;
+                }
 			}
-		</style>
-	</head>
-	<body oncontextmenu="return false">
-		<div class="sidebar">
-			<div class="header">
-				<img src="docs/docs_logo.png" usemap="#logo" width="100%" height="auto" title="" alt="">
-				<map name="logo">
-					<area shape="rect" coords="0,0,1097,1322" title="" alt="">
-				</map>
-				<div id="desktop">
-					<div class="divider"></div>
-					<svg id="nav_000_svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" stroke-linecap="round" stroke-width="1.5">
-						<path d="M5 14l6-6-6-6"></path>
-					</svg>
-					<div class="boxed">
-						<input type="radio" name="input" value="input_000" id="nav_000">
-						<div class="nav_000">
-							<label class="text" for="nav_000">Kursangebote</label>
-							<a href="javascript:;">Kinder & Jugendliche</a>
-							<a href="javascript:;">Erwachsene</a>
-							<a href="javascript:;">Samstagstrainings</a>
-							<a href="javascript:;">Ferienkurse</a>
-							<a href="javascript:;">Workshops</a>
-						</div>
-					</div>
-					<div class="divider"></div>
-					<svg id="nav_001_svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" stroke-linecap="round" stroke-width="1.5">
-						<path d="M5 14l6-6-6-6"></path>
-					</svg>
-					<div class="boxed">
-						<input type="radio" name="input" value="input_001" id="nav_001">
-						<div class="nav_001">
-							<label class="text" for="nav_001">Zirkus Rägeboge</label>
-							<a href="javascript:;">Aufführungen</a>
-							<a href="javascript:;">Teilnahme</a>
-							<a href="javascript:;">Leitbild</a>
-							<a href="javascript:;">Presse</a>
-						</div>
-					</div>
-					<div class="divider"></div>
-					<svg id="nav_002_svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" stroke-linecap="round" stroke-width="1.5">
-						<path d="M5 14l6-6-6-6"></path>
-					</svg>
-					<div class="boxed">
-						<input type="radio" name="input" value="input_002" id="nav_002">
-						<div class="nav_002">
-							<label class="text" for="nav_002">Informationen</label>
-							<a href="javascript:;">Team</a>
-							<a href="javascript:;">Kontakt</a>
-							<a href="javascript:;">Betriebsverein</a>
-						</div>
-					</div>
-					<div class="divider"></div>
-				</div>
-			</div>
-			<div class="footer">
-				<div class="boxed"> <!-- fix .boxed spacing on mobile -->
-					<div class="text">Zirkus Schule Basel</div>
-					<div class="text">Dornacherstr. 192</div>
-					<div class="text">CH-4053 Basel</div>
-					<div class="spacing_175"></div>
-					<div class="text">+41 61 331 27 70</div>
-				</div>
-			</div>
-		</div>
-		<div class="main">
-			<div class="box">
-				<div class="title">
-					Die Zirkus Schule Basel
-				</div>
-				<div class="divider"></div>
-				<div class="text">
-					17. Ferbuar 2022
-				</div>
-				<div class="spacing_175"></div>
-				<div class="text">
-					Seit über 25 Jahren bietet die Zirkus Schule Basel Kindern, Jugendlichen und Erwachsenen den Raum, die Vielfalt der Zirkuskünste zu erleben. Mit Freude und nach eigenem Tempo und Vermögen erlernen sie Bewegungsabläufe und entwickeln so Körpergefühl, Selbstvertrauen und Selbstbewusstsein. Unser Team qualifizierter Lehrpersonen bietet Kurse in Akrobatik und Artistik für AnfängerInnen bis Fortgeschrittene an. In Workshops und Ferienkursen können Interessierte erste Erfahrungen sammeln oder Fähigkeiten vertiefen. Die Zirkus Schule Basel steht als Freizeitschule allen offen. Jedes Jahr finden auf dem Gundeldinger Feld mit allen Schülerinnen und Schülern der Zirkus Schule Basel Aufführungen vor Publikum statt, bei denen sie ihr erlerntes Können präsentieren. Die Zirkus Schule Basel ist Mitglied im Verband schweizerischer Zirkusschulen.
-					<br><br>
-					<img src="docs/docs_flyer.jpg" width="460px">
-				</div>
-			</div>
-			<div class="spacing_175"></div>
-			<div class="box">
-				<div class="title">
-					Der Zirkus Rägeboge
-				</div>
-				<div class="divider"></div>
-				<div class="text">
-					28. Januar 2022
-				</div>
-				<div class="spacing_175"></div>
-				<div class="text">
-					Der Zirkus Rägeboge bietet eine besondere Herausforderung innerhalb der Zirkus Schule Basel. Er steht allen Kindern und Jugendlichen von 9 - 17 Jahren offen, die eine Grundausbildung an der Zirkus Schule absolviert haben. Die Truppe von etwa 30 Kindern und Jugendlichen trainieren unter der professionellen Leitung von Carina Ott und Jonas Althaus. Gemeinsam wird jedes Jahr ab Sommer ein Programm unter einem selbstgewählten Thema auf die Beine gestellt. Die öffentlichen Aufführungen finden dann im Frühjahr in einer ehemaligen Fabrikhalle auf dem Gundeldinger Feld statt. 			</div>
-				</div>
-			<div class="spacing_175"></div>
-			<div class="box">
-				<div class="title">
-					Die Zirkus Schule Basel
-				</div>
-				<div class="divider"></div>
-				<div class="text">
-					17. Ferbuar 2022
-				</div>
-				<div class="spacing_175"></div>
-				<div class="text">
-					Seit über 25 Jahren bietet die Zirkus Schule Basel Kindern, Jugendlichen und Erwachsenen den Raum, die Vielfalt der Zirkuskünste zu erleben. Mit Freude und nach eigenem Tempo und Vermögen erlernen sie Bewegungsabläufe und entwickeln so Körpergefühl, Selbstvertrauen und Selbstbewusstsein. Unser Team qualifizierter Lehrpersonen bietet Kurse in Akrobatik und Artistik für AnfängerInnen bis Fortgeschrittene an. In Workshops und Ferienkursen können Interessierte erste Erfahrungen sammeln oder Fähigkeiten vertiefen. Die Zirkus Schule Basel steht als Freizeitschule allen offen. Jedes Jahr finden auf dem Gundeldinger Feld mit allen Schülerinnen und Schülern der Zirkus Schule Basel Aufführungen vor Publikum statt, bei denen sie ihr erlerntes Können präsentieren. Die Zirkus Schule Basel ist Mitglied im Verband schweizerischer Zirkusschulen.
-				</div>
-			</div>
-			<div class="spacing_175"></div>
-			<div class="box">
-				<div class="title">
-					Der Zirkus Rägeboge
-				</div>
-				<div class="divider"></div>
-				<div class="text">
-					28. Januar 2022
-				</div>
-				<div class="spacing_175"></div>
-				<div class="text">
-					Der Zirkus Rägeboge bietet eine besondere Herausforderung innerhalb der Zirkus Schule Basel. Er steht allen Kindern und Jugendlichen von 9 - 17 Jahren offen, die eine Grundausbildung an der Zirkus Schule absolviert haben. Die Truppe von etwa 30 Kindern und Jugendlichen trainieren unter der professionellen Leitung von Carina Ott und Jonas Althaus. Gemeinsam wird jedes Jahr ab Sommer ein Programm unter einem selbstgewählten Thema auf die Beine gestellt. Die öffentlichen Aufführungen finden dann im Frühjahr in einer ehemaligen Fabrikhalle auf dem Gundeldinger Feld statt. 			</div>
-				</div>
-			</div>
-			<div class="spacing_175"></div>
-		</div>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-        <script src="docs/js/jquery.min.js"></script>
-		<script>
-			$(document).ready(function()
-			{
-				$('input:radio[name="input"]').change(function()
-				{
-					if ($(this).val() == 'input_000')
-					{
-						document.getElementById('nav_000_svg').style.rotate = '90deg';
-						document.getElementById('nav_001_svg').style.rotate = '0deg';
-						document.getElementById('nav_002_svg').style.rotate = '0deg';
-					}
-					if ($(this).val() == 'input_001')
-					{
-						document.getElementById('nav_000_svg').style.rotate = '0deg';
-						document.getElementById('nav_001_svg').style.rotate = '90deg';
-						document.getElementById('nav_002_svg').style.rotate = '0deg';
-					}
-					if ($(this).val() == 'input_002')
-					{
-						document.getElementById('nav_000_svg').style.rotate = '0deg';
-						document.getElementById('nav_001_svg').style.rotate = '0deg';
-						document.getElementById('nav_002_svg').style.rotate = '90deg';
-					}
-				});
-			});
-		</script>
-	</body>
+        </style>
+    </head>
+    <body oncontextmenu="return false">
+        <div class="desktop">
+            <div class="main">
+                <div class="column_left">
+                    <div class="cube slide-in_a">
+                        <div class="img" id="img_jonas"></div>
+                        <div class="font">
+                            Jonas Altaus
+                        </div>
+                    </div>
+                    <div class="cube slide-in_c">
+                        <div class="img" id="img_carina"></div>
+                        <div class="font">
+                            Carina Ott
+                        </div>
+                    </div>
+                    <div class="cube slide-in_e">
+                        slide-in_e
+                    </div>
+                </div>
+                <div class="column_right">
+                    <div class="cube slide-in_b">
+                        <div class="img" id="img_dagmar"></div>
+                        <div class="font">
+                            Dagmar Horstmann
+                        </div>   
+                    </div>
+                    <div class="cube slide-in_d">
+                        slide-in_e
+                    </div>
+                    <div class="cube slide-in_f">
+                        slide-in_e
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile">
+            <div class="main">
+                <div class="column_left">
+                    <div class="cube slide-in_a">
+                        <div class="img" id="img_jonas"></div>
+                        <div class="font">
+                            Jonas Altaus
+                        </div>
+                    </div>
+                    <div class="cube slide-in_c">
+                        <div class="img" id="img_carina"></div>
+                        <div class="font">
+                            Carina Ott
+                        </div>
+                    </div>
+                    <div class="cube slide-in_e">
+                        slide-in_e
+                    </div>
+                </div>
+                <div class="column_right">
+                    <div class="cube slide-in_b">
+                        <div class="img" id="img_dagmar"></div>
+                        <div class="font">
+                            Dagmar Horstmann
+                        </div>   
+                    </div>
+                    <div class="cube slide-in_d">
+                        slide-in_e
+                    </div>
+                    <div class="cube slide-in_f">
+                        slide-in_e
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
