@@ -37,33 +37,17 @@
                 user-select: none;
 
                 font-family: "font";
-                text-transform: none;
+                text-transform: lowercase;
                 text-decoration: none;
                 line-height: 1.2;
                 color: black;
-
-                list-style: none;
             }
             body {
 				width: 100%;
 				height: 100vh;
 			}
-			.spacing_175 {
-				background-color: transparent;
-				display: block;
-				height: 17.5px;
-			}
-			.divider {
-				background-color: transparent;
-				display: block;
-
-				color: rgba(35, 35, 35, .2);
-				border-style: solid none none none;
-				border-width: .5px;
-				margin: 8.25px 0px 8.25px 0px;
-			}
             .sidebar {
-				background-color: rgba(245, 245, 245, 1);
+				background-color: red;
 				position: fixed;
 				display: block;
 
@@ -91,14 +75,14 @@
                 right: 0;
             }
             .cube {
-                background-color: rgba(245, 245, 245, 1);
+                background-color: rgba(195, 195, 195, 0.35);
 
-                box-shadow: 10px 10px 10px rgba(100, 100, 100, .25);
+                box-shadow: 10px 10px 10px rgba(100, 100, 100, .35);
                 border-radius: 17.5px 17.5px 17.5px 17.5px;
 
                 font-size: 17.5px;
                 line-height: 35px;
-            }
+            }s
             .spacing_350 {
                 background-color: inherit;
                 display: block;
@@ -226,21 +210,17 @@
 					background-color: transparent;
                     margin: 0px;
                     z-index: 1;
-                    width: 100%;
 				}
 				.header, .footer {
-					background-color: rgba(245, 245, 245, 1);
+					background-color: red;
 					display: flex;
 					padding: 17.5px 17.5px 17.5px 17.5px;
-                    width: calc(100% - 35px);
 				}
 				.header {
-					box-shadow: 0px 10px 10px rgba(100, 100, 100, .25);
-					border-radius: 0px 0px 17.5px 17.5px;
+					box-shadow: 0px 10px 10px rgba(0, 0, 0, .2);
 				}
 				.footer {
-					box-shadow: 0px -10px 10px rgba(100, 100, 100, .25);
-					border-radius: 17.5px 17.5px 0px 0px;
+					box-shadow: 0px -10px 10px rgba(0, 0, 0, .2);
 				}
                 .header img {
 					background-color: transparent;
@@ -251,10 +231,10 @@
                     margin: 0px 0px 0px 17.5px;
                 }
                 .column_left {
-                    margin: 129.833px 0px 0px 0px;
+                    margin: 35px 0px 0px 0px;
                 }
                 .column_right {
-                    margin: calc(52.5px + 129.833px) 0px 0px 0px;
+                    margin: calc(52.5px + 35px) 0px 0px 0px;
                 }
                 .cube {
                     width: calc(calc(100vw / 2) - 26.25px);
@@ -269,20 +249,15 @@
 					display: none !important;
 				}
                 .sidebar {
-					background-color: rgba(245, 245, 245, 1);
-					box-shadow: 10px 0px 10px rgba(100, 100, 100, .25);
-					border-radius: 0px 17.5px 17.5px 0px;
+					background-color: red;
+					box-shadow: 0px 0px 17.5px rgba(0, 0, 0, .2);
 					width: 185px;
 				}
 				.header, .footer {
 					background-color: inherit;
 					display: block;
 				}
-                .header {
-                    border-radius: 0px 17.5px 17.5px 0px;
-                }
 				.footer {
-                    border-radius: 0px 17.5px 17.5px 0px;
 					margin: 17.5px 0px 35px 0px;
 				}
                 .header img {
@@ -303,141 +278,17 @@
                 .img {
                     height: 500px;
                 }
-/*	-----	UNCLEANED	-----	*/
-				svg
-				{
-					position: fixed;
-
-					height: 35px;
-					width: 17.5px;
-
-					margin: 0px 0px 0px 17.5px;
-					transition: .35s ease;
-				}
-				.boxed
-				{
-					margin: 0px 17.5px 0px 17.5px;
-				}
-				input[type="radio"]
-				{
-					display: none;
-				}
-				#nav_000:checked + .nav_000
-				{
-					height: calc(calc(5 * 35px) + 35px);
-
-					transition: all .3s;
-					overflow: hidden;
-				}
-				#nav_001:checked + .nav_001
-				{
-					height: calc(calc(4 * 35px) + 35px);
-
-					transition: all .3s;
-					overflow: hidden;
-				}
-				#nav_002:checked + .nav_002
-				{
-					height: calc(calc(3 * 35px) + 35px);
-
-					transition: all .3s;
-					overflow: hidden;
-				}
-				.nav_000, .nav_001, .nav_002
-				{
-					height: 35px;
-
-					transition: all .3s;
-					overflow: hidden;
-				}
-				a, label
-				{
-					display: block;
-
-					padding: 8.25px 8.25px 8.25px 0px;
-
-					font-size: 16px;
-					line-height: 17.5px;
-					transition: all .25s;
-				}
-				label
-				{
-					padding: 8.25px 8.25px 8.25px 26.75px !important;
-				}
-				a:hover, label:hover
-				{
-					color: #FFEFDB;
-					cursor: pointer;
-				}
-/*	-----	UNCLEANED	-----	*/
 			}
         </style>
     </head>
     <body oncontextmenu="return false">
-<!-- UNCLEANED -->
-		<div class="sidebar">
-			<div class="header">
-				<img src="docs/docs_logo_black.png" usemap="#logo" width="100%" height="auto" title="" alt="">
-				<map name="logo">
-					<area shape="rect" coords="0,0,1097,1322" title="" alt="">
-				</map>
-				<div id="desktop">
-					<div class="divider"></div>
-					<svg id="nav_000_svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#222222" stroke-linecap="round" stroke-width="1.5">
-						<path d="M5 14l6-6-6-6"></path>
-					</svg>
-					<div class="boxed">
-						<input type="radio" name="input" value="input_000" id="nav_000">
-						<div class="nav_000">
-							<label class="text" for="nav_000">Kursangebote</label>
-							<a href="javascript:;">Kinder & Jugendliche</a>
-							<a href="javascript:;">Erwachsene</a>
-							<a href="javascript:;">Samstagstrainings</a>
-							<a href="javascript:;">Ferienkurse</a>
-							<a href="javascript:;">Workshops</a>
-						</div>
-					</div>
-					<div class="divider"></div>
-					<svg id="nav_001_svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#222222" stroke-linecap="round" stroke-width="1.5">
-						<path d="M5 14l6-6-6-6"></path>
-					</svg>
-					<div class="boxed">
-						<input type="radio" name="input" value="input_001" id="nav_001">
-						<div class="nav_001">
-							<label class="text" for="nav_001">Zirkus Rägeboge</label>
-							<a href="javascript:;">Aufführungen</a>
-							<a href="javascript:;">Teilnahme</a>
-							<a href="javascript:;">Leitbild</a>
-							<a href="javascript:;">Presse</a>
-						</div>
-					</div>
-					<div class="divider"></div>
-					<svg id="nav_002_svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#222222" stroke-linecap="round" stroke-width="1.5">
-						<path d="M5 14l6-6-6-6"></path>
-					</svg>
-					<div class="boxed">
-						<input type="radio" name="input" value="input_002" id="nav_002">
-						<div class="nav_002">
-							<label class="text" for="nav_002">Informationen</label>
-							<a href="javascript:;">Team</a>
-							<a href="javascript:;">Kontakt</a>
-							<a href="javascript:;">Betriebsverein</a>
-						</div>
-					</div>
-					<div class="divider"></div>
-				</div>
-			</div>
-			<div class="footer">
-				<div class="boxed"> <!-- fix .boxed spacing on mobile -->
-					<div class="text">Zirkus Schule Basel</div>
-					<div class="text">Dornacherstr. 192</div>
-					<div class="text">CH-4053 Basel</div>
-					<div class="spacing_175"></div>
-					<div class="text">+41 61 331 27 70</div>
-				</div>
-			</div>
-		</div>
-<!-- UNCLEANED -->
+        <div class="sidebar">
+            <div class="header">
+                <img src="docs/docs_logo_white.png" width="100%" height="auto" title="" alt="">
+            </div>
+            <div class="footer">
+            </div>
+        </div>
         <div class="main">
             <div class="desktop">
                 <div class="column_left">
@@ -487,10 +338,7 @@
                         </div>
                     </div>
                     <div class="cube slide-in_e">
-                        <div class="img" id="img_dagmar"></div>
-                        <div class="font">
-                            Dagmar Horstmann
-                        </div>
+                        slide-in_e
                     </div>
                 </div>
                 <div class="column_right">
@@ -501,16 +349,10 @@
                         </div>   
                     </div>
                     <div class="cube slide-in_d">
-                        <div class="img" id="img_jonas"></div>
-                        <div class="font">
-                            Jonas Altaus
-                        </div>
+                        slide-in_e
                     </div>
                     <div class="cube slide-in_f">
-                        <div class="img" id="img_carina"></div>
-                        <div class="font">
-                            Carina Ott
-                        </div>
+                        slide-in_e
                     </div>
                 </div>
             </div>
