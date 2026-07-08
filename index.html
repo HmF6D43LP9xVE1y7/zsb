@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accordion Test</title>
+    <style>
+        :root {
+            --accordion-title-background: lightgray;
+            --accordion-open-title-background: gray;
+            --accordion-expand-rate: 0.3s;
+            --accordion-border-radius: 4px;
+            --accordion-fan-accordion-border-style: 1px solid #ddd;
+            --accordion-title-text-transform: capitalize;
+            --accordion-content-padding: 1rem;
+        }
+
+        body {
+            font-family: "Segoe UI", Calibri, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background: #fff;
+            color: #222;
+        }
+
+        #main {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        accordion-element {
+            width: 95%;
+            display: block;
+            border-radius: var(--accordion-border-radius);
+            margin-top: 0.1em;
+        }
+
+        accordion-element > .accordion-title {
+            background-color: var(--accordion-title-background);
+            text-transform: var(--accordion-title-text-transform);
+            border-radius: inherit;
+            padding: 1rem;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        accordion-element > .accordion-body {
+            width: 95%;
+            overflow: hidden;
+            height: 0;
+            transition: height var(--accordion-expand-rate) ease-out;
+            word-wrap: anywhere;
+            box-sizing: border-box;
+        }
+
+        accordion-element.open > .accordion-title {
+            background-color: var(--accordion-open-title-background);
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        accordion-element > .accordion-body > .accordion-content {
+            padding: var(--accordion-content-padding);
+        }
+
+        accordion-element > .accordion-body > accordion-element {
+            margin-left: 1em;
+            width: calc(100% - 1em);
+        }
+
+        accordion-fan {
+            width: 95%;
+            padding-top: 1vh;
+            display: block;
+        }
+
+        accordion-fan > accordion-element {
+            border: var(--accordion-fan-accordion-border-style);
+            border-radius: 0;
+            width: 100%;
+            margin-top: -1vh;
+        }
+
+        accordion-fan > accordion-element:first-child {
+            border-top-left-radius: var(--accordion-border-radius);
+            border-top-right-radius: var(--accordion-border-radius);
+        }
+
+        accordion-fan > accordion-element:last-child {
+            border-bottom-left-radius: var(--accordion-border-radius);
+            border-bottom-right-radius: var(--accordion-border-radius);
+        }
+
+        /* Chevron icon styling - single chevron-down that rotates */
+        accordion-element > .accordion-title > svg.chevron-icon {
+            order: 2;
+            transition: transform var(--accordion-expand-rate) ease-out;
+            flex-shrink: 0;
+        }
+
+        accordion-element > .accordion-title > span.accordion-title-text {
+            order: 1;
+            flex-grow: 1;
+        }
+
+        /* When open, rotate chevron 180deg so it points up */
+        accordion-element.open > .accordion-title > svg.chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-word;
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow: auto;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        li {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <accordion-fan>
+            <accordion-element data-title="Kurse" data-group="groupA" data-open>
+                <ul>
+                    <li><a href="kurse/kleinkinder">Kleinkinder</a></li>
+                    <li><a href="kurse/kindergarten-kinder">Kindergarten-Kinder</a></li>
+                    <li><a href="kurse/schulkinder">Schulkinder</a></li>
+                    <li><a href="kurse/erwachsene">Erwachsene</a></li>
+                    <li><a href="kurse/boden-luftakrobatik">Boden-/Luftakrobatik</a></li>
+                </ul>
+                <ul>
+                    <li>Samstagstraining</li>
+                    <li>Ferienkursangebote</li>
+                    <li>Workshops</li>
+                    <li>Aufführungsprojekt "Weihnachtszauber"</li>
+                </ul>
+                <ul>
+                    <li>Kursanmeldung</li>
+                    <li>Allgemeine Kursbestimmungen</li>
+                </ul>
+            </accordion-element>
+
+            <accordion-element data-title="Stundenplan" data-group="groupA">
+                <iframe src="https://zirkusschulebasel.ch/wp-content/uploads/2026/06/ZSB-Stundenplan-Schuljahr-2026-2027.pdf" style="width: 100%; height: 700px; border: 0;" loading="lazy">
+                </iframe>
+            </accordion-element>
+
+            <accordion-element data-title="Schnuppern" data-group="groupA">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            </accordion-element>
+
+            <accordion-element data-title="Über uns" data-group="groupA">
+                <ul>
+                    <li>Leitbild</li>
+                    <li>Team</li>
+                    <li>Betriebsverein</li>
+                    <li>Adresse / Kontakt</li>
+                    <li>So finden Sie uns</li>
+                </ul>
+            </accordion-element>
+
+            <accordion-element data-title="Zirkus Rägeboge" data-group="groupA">
+                <ul>
+                    <accordion-element data-title="Trainigskalender" data-group="groupA">
+                        <iframe src="https://zirkusschulebasel.ch/wp-content/uploads/2026/03/Kalender-ZR-2025-2026-V5xlsx-2.pdf" style="width: 100%; height: 700px; border: 0;" loading="lazy">
+                        </iframe>
+                    </accordion-element>
+                    <li>Programmarchiv</li>
+                    <li>Presse</li>
+                    <li>Teilnahmebedingungen</li>
+                </ul>
+            </accordion-element>
+
+            <accordion-element data-title="Vermietungen" data-group="groupA">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            </accordion-element>
+
+            <accordion-element data-title="Spenden" data-group="groupA">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                <!--
+                <pre>&lt;accordion-element data-title="Opening This One Does Not Close The Others" data-group="test"&gt;&lt;/accordion-element&gt;</pre>
+                -->
+            </accordion-element>
+        </accordion-fan>
+<!--
+        <accordion-element data-title="nested">
+            <accordion-element data-title="Just use the data-group attribute" data-group="nested">
+            </accordion-element>
+
+            <accordion-element data-title="Inner Accordions dynamically size the parent accordion's height" data-group="nested">
+                <ul>
+                    <li>001</li>
+                    <li>002</li>
+                    <li>003</li>
+                </ul>
+            </accordion-element>
+
+            <accordion-element data-title="Closing the parent accordion closes all open child accordions" data-group="nested">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>header 1</th>
+                            <th>header 2</th>
+                            <th>header 3</th>
+                            <th>header 4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>cell 1</td><td>cell 2</td><td>cell 3</td><td>cell 4</td></tr>
+                        <tr><td>cell 1</td><td>cell 2</td><td>cell 3</td><td>cell 4</td></tr>
+                        <tr><td>cell 1</td><td>cell 2</td><td>cell 3</td><td>cell 4</td></tr>
+                    </tbody>
+                </table>
+            </accordion-element>
+        </accordion-element>
+        -->
+    </div>
+
+    <script>
+        // A custom accordion element that opens and closes its own content.
+        class AccordionElement extends HTMLElement {
+            constructor() {
+                super();
+
+                // Track whether this accordion is open.
+                this.isOpenValue = false;
+
+                // Store references to the parts we create.
+                this.titleElement = null;
+                this.bodyElement = null;
+                this.contentElement = null;
+                this.observer = null;
+                this.chevronElement = null;
+            }
+
+            // Runs when the element appears in the page.
+            connectedCallback() {
+                // Do nothing if this accordion was already set up.
+                if (this.isInitialized) {
+                    return;
+                }
+                this.isInitialized = true;
+
+                // Read the title text from the data-title attribute.
+                const titleText = this.dataset.title || "";
+
+                // Create the clickable title bar.
+                const titleElement = document.createElement("div");
+                titleElement.className = "accordion-title";
+
+                // Create the title text span.
+                const titleTextElement = document.createElement("span");
+                titleTextElement.className = "accordion-title-text";
+                titleTextElement.textContent = titleText;
+
+                // Create the chevron icon using SVG.
+                const chevronElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                chevronElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+                chevronElement.setAttribute("width", "16");
+                chevronElement.setAttribute("height", "16");
+                chevronElement.setAttribute("fill", "currentColor");
+                chevronElement.setAttribute("class", "bi bi-chevron-down chevron-icon");
+                chevronElement.innerHTML = '<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>';
+
+                // Put the text and icon inside the title bar.
+                titleElement.appendChild(titleTextElement);
+                titleElement.appendChild(chevronElement);
+
+                // Open and close the accordion when the title is clicked.
+                titleElement.addEventListener("click", () => {
+                    this.toggleAccordion();
+                });
+
+                // Create the body area that expands and collapses.
+                const bodyElement = document.createElement("div");
+                bodyElement.className = "accordion-body";
+
+                // Create a wrapper for the original content.
+                const contentElement = document.createElement("div");
+                contentElement.className = "accordion-content";
+
+                // Move all existing child nodes into the content wrapper.
+                while (this.firstChild) {
+                    contentElement.appendChild(this.firstChild);
+                }
+
+                // Build the accordion structure.
+                bodyElement.appendChild(contentElement);
+                this.appendChild(titleElement);
+                this.appendChild(bodyElement);
+
+                // Save references for later use.
+                this.titleElement = titleElement;
+                this.bodyElement = bodyElement;
+                this.contentElement = contentElement;
+                this.chevronElement = chevronElement;
+
+                // Start open if the data-open attribute exists.
+                if (this.hasAttribute("data-open")) {
+                    this.openAccordion(false);
+                } else {
+                    this.bodyElement.style.height = "0px";
+                }
+
+                // Watch for content changes so the height stays correct.
+                this.observer = new MutationObserver(() => {
+                    if (this.isOpenValue) {
+                        this.updateBodyHeight();
+                    }
+                });
+
+                this.observer.observe(this, { childList: true, subtree: true });
+            }
+
+            // Clean up when the element is removed from the page.
+            disconnectedCallback() {
+                if (this.observer) {
+                    this.observer.disconnect();
+                }
+            }
+
+            // Return whether this accordion is open.
+            get isOpen() {
+                return this.isOpenValue;
+            }
+
+            // Return the group name from data-group.
+            get groupName() {
+                return (this.dataset.group || "").toLowerCase();
+            }
+
+            // Open the accordion.
+            openAccordion(animate = true) {
+                const groupName = this.groupName;
+
+                // If this accordion belongs to a group, close the others in that group.
+                if (groupName) {
+                    const otherAccordionsInGroup = document.querySelectorAll(
+                        `accordion-element[data-group="${this.dataset.group}"]`
+                    );
+
+                    otherAccordionsInGroup.forEach((accordionElement) => {
+                        if (accordionElement !== this) {
+                            accordionElement.closeAccordion();
+                        }
+                    });
+                }
+
+                this.isOpenValue = true;
+                this.classList.add("open");
+
+                // Open without animation if requested.
+                if (!animate) {
+                    this.bodyElement.style.transition = "none";
+                    this.bodyElement.style.height = "auto";
+
+                    requestAnimationFrame(() => {
+                        this.bodyElement.style.transition = "";
+                    });
+
+                    return;
+                }
+
+                // Animate to the full height.
+                this.bodyElement.style.height = this.bodyElement.scrollHeight + "px";
+
+                const handleTransitionEnd = () => {
+                    if (!this.isOpenValue) {
+                        return;
+                    }
+
+                    this.bodyElement.style.height = "auto";
+                    this.bodyElement.removeEventListener("transitionend", handleTransitionEnd);
+                };
+
+                this.bodyElement.addEventListener("transitionend", handleTransitionEnd);
+            }
+
+            // Close the accordion and any nested accordions inside it.
+            closeAccordion() {
+                if (!this.isOpenValue) {
+                    return;
+                }
+
+                this.isOpenValue = false;
+
+                // Set the current height first so the collapse animation starts smoothly.
+                const currentHeight = this.bodyElement.scrollHeight;
+                this.bodyElement.style.height = currentHeight + "px";
+
+                // Force the browser to notice the height before collapsing.
+                void this.bodyElement.offsetWidth;
+
+                // Collapse on the next frame.
+                requestAnimationFrame(() => {
+                    this.classList.remove("open");
+                    this.bodyElement.style.height = "0px";
+                });
+
+                // Close nested accordions too.
+                this.querySelectorAll("accordion-element").forEach((childAccordion) => {
+                    childAccordion.closeAccordion();
+                });
+            }
+
+            // Switch between open and closed.
+            toggleAccordion() {
+                if (this.isOpenValue) {
+                    this.closeAccordion();
+                } else {
+                    this.openAccordion(true);
+                }
+            }
+
+            // Update the height so open content fits correctly.
+            updateBodyHeight() {
+                this.bodyElement.style.height = "auto";
+                this.bodyElement.style.height = this.bodyElement.scrollHeight + "px";
+            }
+        }
+
+        // A wrapper that puts all direct child accordions into the same group.
+        class AccordionFan extends HTMLElement {
+            connectedCallback() {
+                if (this.isInitialized) {
+                    return;
+                }
+                this.isInitialized = true;
+
+                const childAccordionElements = Array.from(
+                    this.querySelectorAll(":scope > accordion-element")
+                );
+                const groupName = `fan-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+
+                childAccordionElements.forEach((accordionElement) => {
+                    accordionElement.dataset.group = groupName;
+                });
+            }
+        }
+
+        // Register the custom elements once.
+        if (!customElements.get("accordion-element")) {
+            customElements.define("accordion-element", AccordionElement);
+        }
+
+        if (!customElements.get("accordion-fan")) {
+            customElements.define("accordion-fan", AccordionFan);
+        }
+    </script>
+</body>
+</html>
