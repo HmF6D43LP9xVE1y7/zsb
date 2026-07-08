@@ -86,19 +86,17 @@
 
         :root {
             --accordion-expand-rate: 0.3s;
-            --accordion-border-radius: 4px;
+            --accordion-border-radius: 0px;
             --accordion-title-text-transform: capitalize;
             --accordion-content-padding: 1rem;
             --ease-mode: ease-out;
         }
 
         #main {
-            display: flex;
             justify-content: center;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
-            max-width: 100%;
+            max-width: 100vw;
             margin: 0 auto;
         }
 
@@ -110,7 +108,7 @@
             background-color: var(--accordion-title-background);
             text-transform: var(--accordion-title-text-transform);
             border-radius: inherit;
-            padding: 1rem;
+            padding: 1em;
             cursor: pointer;
             user-select: none;
             display: flex;
@@ -119,7 +117,7 @@
         }
 
         accordion-element > .accordion-body {
-            width: 95%;
+            width: 100vw;
             overflow: hidden;
             height: 0;
             transition: height var(--accordion-expand-rate) var(--ease-mode);
@@ -138,8 +136,7 @@
         }
 
         accordion-element > .accordion-body > accordion-element {
-            margin-left: 1em;
-            width: calc(100% - 1em);
+            width: 100vw;
         }
 
         accordion-fan {
@@ -151,7 +148,7 @@
         accordion-fan > accordion-element {
             border: var(--border);
             border-radius: 0;
-            width: 100%;
+            width: 100vw;
             margin-top: -1vh;
         }
 
@@ -241,7 +238,6 @@
         background: var(--bg);
         color: var(--font);
         font-family: Arial, sans-serif;
-        padding: 2rem;
         }
 
         .theme-toggle {
@@ -342,7 +338,7 @@
             <accordion-element data-title="Stundenplan" data-group="groupA">
                 <iframe
                     src="https://zirkusschulebasel.ch/wp-content/uploads/2026/06/ZSB-Stundenplan-Schuljahr-2026-2027.pdf#pagemode=none&view=Fit"
-                    style="width: 100%; aspect-ratio: 297 / 210; border: 0;"
+                    style="width: calc(100vw - 1em); aspect-ratio: 297 / 210; border: 0;"
                     loading="lazy">
                 </iframe>
             </accordion-element>
@@ -674,7 +670,7 @@
     checkbox.id = 'sqOverlayCheckbox';
     checkbox.style.position = 'fixed';
     checkbox.style.top = '10px';
-    checkbox.style.left = '10px';
+    checkbox.style.left = '95vw';
     checkbox.style.zIndex = '1000001';
 
     // Label (optional)
