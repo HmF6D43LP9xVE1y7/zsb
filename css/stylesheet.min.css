@@ -500,7 +500,10 @@ svg:hover {
         grid-template-rows: repeat(30, calc(var(--mWbV)));
     }
     .kurseC {
-        grid-template-rows: repeat(16, calc(var(--mWbV)));
+        grid-template-rows: repeat(35, calc(var(--mWbV)));
+    }
+    .kurseD {
+        grid-template-rows: repeat(35, calc(var(--mWbV)));
     }
 }
 /* TABLET */
@@ -716,3 +719,32 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
         .pulse {
             fill: rgb(149, 0, 47);
         }
+
+
+
+
+
+
+
+          .menu {
+            position: fixed;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+        }
+
+  .menu div {
+    display: block;
+    color: #000;
+    text-decoration: none;
+    margin: 6px 0;
+    font-size: 16px;
+  }
+
+  .menu div.active {
+    color: red;
+    font-weight: bold;
+  }
