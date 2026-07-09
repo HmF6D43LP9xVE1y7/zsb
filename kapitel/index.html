@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fixed Menu</title>
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    min-height: 200vh;
+  }
+
+  .menu {
+    position: fixed;
+    margin-left: 1200px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+  }
+
+  .menu a {
+    display: block;
+    color: #000;
+    text-decoration: none;
+    margin: 6px 0;
+    font-size: 16px;
+  }
+
+  .menu a.active {
+    color: red;
+    font-weight: bold;
+  }
+
+  section {
+    height: 100vh;
+    padding: 24px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+  }
+
+  #s40 {
+    background: #f7f7f7;
+  }
+
+  #s80 {
+    background: #efefef;
+  }
+
+  /* Optional: helps anchor targets not hide under fixed menu */
+  section {
+    scroll-margin-top: 60px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="menu">
+  <a href="#s40" id="link40">Kapitel 1</a>
+  <a href="#s80" id="link80">Kapitel 2</a>
+</nav>
+
+<section id="s40">
+  <h1>Kapitel 1</h1>
+  <p>blabla</p>
+</section>
+
+<section id="s80">
+  <h1>Kapitel 2</h1>
+  <p>bla bla</p>
+</section>
+
+<section>
+  <h1>und so weiter</h1>
+  <p>bla bla</p>
+</section>
+
+<script>
+  const link40 = document.getElementById('link40');
+  const link80 = document.getElementById('link80');
+  const s40 = document.getElementById('s40');
+  const s80 = document.getElementById('s80');
+
+  function setActive() {
+    const y = window.scrollY;
+    const vh = window.innerHeight;
+    const docH = document.documentElement.scrollHeight;
+    const maxScroll = Math.max(1, docH - vh);
+
+    const p = y / maxScroll; // 0.0 to 1.0
+
+    link40.classList.remove('active');
+    link80.classList.remove('active');
+
+    if (p < 0.4) {
+      link40.classList.add('active');
+    } else {
+      link80.classList.add('active');
+    }
+  }
+
+  window.addEventListener('scroll', setActive);
+  window.addEventListener('resize', setActive);
+  setActive();
+
+  link40.addEventListener('click', (e) => {
+    e.preventDefault();
+    s40.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  link80.addEventListener('click', (e) => {
+    e.preventDefault();
+    s80.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+
+</body>
+</html>

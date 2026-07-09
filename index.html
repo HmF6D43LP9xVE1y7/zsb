@@ -1,728 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Accordion Test</title>
-    <style>
-        @font-face {
-            font-family: "din-2014";
-            src:    url(../assets/font/din_2014_400_normal.eot),
-                    url('../assets/font/din_2014_400_normal.eot?#iefix') format('embedded-opentype'),
-                    url(../assets/font/din_2014_400_normal.woff2) format('woff2'),
-                    url(../assets/font/din_2014_400_normal.woff) format('woff'),
-                    url(../assets/font/din_2014_400_normal.ttf) format('truetype'),
-                    url('../assets/font/din_2014_400_normal.svg#din-2014') format('svg');
-            font-display: auto;
-            font-stretch: normal;
-            font-weight: 400;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: "din-2014";
-            src:    url(../assets/font/din_2014_400_italic.eot),
-                    url('../assets/font/din_2014_400_italic.eot?#iefix') format('embedded-opentype'),
-                    url(../assets/font/din_2014_400_italic.woff2) format('woff2'),
-                    url(../assets/font/din_2014_400_italic.woff) format('woff'),
-                    url(../assets/font/din_2014_400_italic.ttf) format('truetype'),
-                    url('../assets/font/din_2014_400_italic.svg#din-2014') format('svg');
-            font-display: auto;
-            font-stretch: normal;
-            font-weight: 400;
-            font-style: italic;
-        }
-        :root {
-            --transparent: rgba(0, 0, 0, 0);
-        }
-        ::-webkit-scrollbar {
-            display: none;
-        }
-        * {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-            box-sizing: border-box;
-            gap: 0 !important;
-            row-gap: 0 !important;
-            column-gap: 0 !important;
-        }
-        html {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-touch-callout: none;
-            -webkit-tap-highlight-color: var(--transparent);
-            hyphenate-character: '-';
-            -webkit-hyphens: none;
-            -ms-hyphens: none;
-            hyphens: none;
-        }
-        body {
-            padding: 0;
-            margin: 0;
-        }
-        div, a, svg, p, img {
-            padding: 0;
-            margin: 0;
-            border: 0;
-            border-spacing: 0;
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Tim Ott">
+        <meta name="copyright" content="Tim Ott">
+        <meta name="language" content="German">
+        <meta name="revisit-after" content="7 days">
+        <meta name="robots" content="index, follow, noarchive, nosnippet">
+        <meta name="googlebot" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
+        <link rel="stylesheet" type="text/css" href="css/stylesheet.min.css">
+        <link rel="canonical" href="https://timott.ch">
+        <meta name="title" content="Architekturfotograf mit Sitz in der Schweiz">
+        <meta name="description" content="Vom Architekturmodell, über regelmässige Baustellenaufnahmen, bis hin zur umfassenden Schlussdokumentation freue ich mich, Ihre Arbeiten zur Aufwertung Ihres Portfolios nach klaren Vorgaben oder eigener Interpretation festhalten zu dürfen. Für Ihre Aufträge bin ich in der gesamten Schweiz sowie dem angrenzenden Ausland verfügbar.">
+        <meta name="keywords" content="Tim Ott, timott, timott.ch, Architekturfotograf, Architekturfotografie, Architektur, architecture, architectural photographer, Schweiz, switzerland, Architekturmodell, Baustellenaufnahmen, Schlussdokumentation">
+        <meta name="google-site-verification" content="xSkSBxSqVInMOVCsHo_F6kJqnmHd_l0r-AQa3zJwH3k">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://timott.ch">
+        <meta property="og:site_name" content="Architekturfotograf mit Sitz in der Schweiz">
+        <meta property="og:title" content="Architekturfotograf mit Sitz in der Schweiz">
+        <meta property="og:description" content="Vom Architekturmodell, über regelmässige Baustellenaufnahmen, bis hin zur umfassenden Schlussdokumentation freue ich mich, Ihre Arbeiten zur Aufwertung Ihres Portfolios nach klaren Vorgaben oder eigener Interpretation festhalten zu dürfen. In der gesamten Schweiz sowie dem angrenzenden Ausland für Ihre Aufträge verfügbar.">
+        <meta property="og:image" content="https://timott.ch/assets/wartenbergstrasse/wartenbergstrasse_052c.jpg">
+        <meta property="og:image:type" content="image/jpeg">
+        <meta property="og:image:width" content="1400">
+        <meta property="og:image:height" content="1000">
+        <meta property="twitter:url" content="https://timott.ch">
+        <meta property="twitter:title" content="Architekturfotograf mit Sitz in der Schweiz">
+        <meta property="twitter:description" content="Vom Architekturmodell, über regelmässige Baustellenaufnahmen, bis hin zur umfassenden Schlussdokumentation freue ich mich, Ihre Arbeiten zur Aufwertung Ihres Portfolios nach klaren Vorgaben oder eigener Interpretation festhalten zu dürfen. In der gesamten Schweiz sowie dem angrenzenden Ausland für Ihre Aufträge verfügbar.">
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:image" content="https://timott.ch/assets/wartenbergstrasse/wartenbergstrasse_052c.jpg">
+        <title>Tim Ott &mdash; Architekturfotograf</title>
+        <script type="application/ld+json">
+            {
+            "@context": "https://schema.org",
+            "@type": "Photographer",
+            "name": "Tim Ott",
+            "url": "https://timott.ch",
+            "image": "https://timott.ch/assets/wartenbergstrasse/wartenbergstrasse_052c.jpg",
+            "areaServed": {
+                "@type": "Country",
+                "name": "Switzerland"
+            },
+            "openingHoursSpecification": [
+                {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "18:00"
+                }
+            ],
+            "sameAs": [
+                "https://www.linkedin.com/in/tim-ott",
+                "https://www.instagram.com/timott.ch"
+            ],
+            "description": "Seit Abschluss der vierjährigen Ausbildung zum Fotograf EFZ an der F+F Schule für Kunst und Design in Zürich, mit vorangehendem Besuch des einjährigen Vorkurses an der Schule für Gestaltung in Basel, betätige ich mich als freischaffender Fotograf im Bereich der Architekturfotografie. Vom Architekturmodell, über regelmässige Baustellenaufnahmen, bis hin zur umfassenden Schlussdokumentation freue ich mich, Ihre Arbeiten zur Aufwertung Ihres Portfolios nach klaren Vorgaben oder eigener Interpretation festhalten zu dürfen. Für Ihre Aufträge bin ich in der gesamten Schweiz sowie dem angrenzenden Ausland verfügbar."
+            }
+        </script>
+    </head>
+    <body oncontextmenu="return false">
+        <svg class="pageFader"></svg>
 
-            font-size: 100%;
-            text-align: left;
-            text-transform: none;
-            text-decoration: none;
-            vertical-align: baseline;
-            font-family: "din-2014", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-        }
+        <div class="SQ"></div>
 
-
-
-
-
-
-
-
-        :root {
-            --accordion-expand-rate: 0.3s;
-            --accordion-border-radius: 0;
-            --accordion-title-text-transform: capitalize;
-            --accordion-content-padding: 1rem;
-            --ease-mode: ease-out;
-        }
-
-        #main {
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
-            max-width: 100vw;
-            margin: 0 auto;
-        }
-
-        accordion-element {
-            display: block;
-        }
-
-        accordion-element > .accordion-title {
-            background-color: var(--accordion-title-background);
-            text-transform: var(--accordion-title-text-transform);
-            border-radius: inherit;
-            padding: 1em;
-            cursor: pointer;
-            user-select: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        accordion-element > .accordion-body {
-            width: 100vw;
-            overflow: hidden;
-            height: 0;
-            transition: height var(--accordion-expand-rate) var(--ease-mode);
-            word-wrap: anywhere;
-            box-sizing: border-box;
-        }
-
-        accordion-element.open > .accordion-title {
-            background-color: var(--accordion-open-title-background);
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-
-        accordion-element > .accordion-body > .accordion-content {
-            padding: var(--accordion-content-padding);
-        }
-
-        accordion-element > .accordion-body > accordion-element {
-            width: 100vw;
-        }
-
-        accordion-fan {
-            width: 95%;
-            padding-top: 1vh;
-            display: block;
-        }
-
-        accordion-fan > accordion-element {
-            border: var(--border);
-            border-radius: 0;
-            width: 100vw;
-            margin-top: -1vh;
-        }
-
-        accordion-fan > accordion-element:first-child {
-            border-top-left-radius: var(--accordion-border-radius);
-            border-top-right-radius: var(--accordion-border-radius);
-        }
-
-        accordion-fan > accordion-element:last-child {
-            border-bottom-left-radius: var(--accordion-border-radius);
-            border-bottom-right-radius: var(--accordion-border-radius);
-        }
-
-        /* Chevron icon styling - single chevron-down that rotates */
-        accordion-element > .accordion-title > svg.chevron-icon {
-            order: 2;
-            transition: transform var(--accordion-expand-rate) var(--ease-mode);
-            flex-shrink: 0;
-        }
-
-        accordion-element > .accordion-title > span.accordion-title-text {
-            order: 1;
-            flex-grow: 1;
-        }
-
-        /* When open, rotate chevron 180deg so it points up */
-        accordion-element.open > .accordion-title > svg.chevron-icon {
-            transform: rotate(180deg);
-        }
-
-        pre {
-            margin: 0;
-            white-space: pre-wrap;
-            word-break: break-word;
-            padding: 1rem;
-            border-radius: 4px;
-            overflow: auto;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            padding: 0.5rem;
-            text-align: left;
-        }
-        li {
-            list-style: none;
-        }
-
-
-
-
-
-
-
-        :root {
-        --black: rgba(20, 20, 20, 1);;
-        --white: rgba(235, 235, 235, 1);
-        --gray: rgb(130, 130, 130);
-        --font: var(--black);
-        --bg: var(--white);
-        --button-bg: var(--white);
-        --accordion-title-background: var(--white);
-        --accordion-open-title-background: var(--gray);
-        --border: 1px solid var(--gray);
-        }
-
-        html.dark {
-        --font: var(--white);
-        --bg: var(--black);
-        --button-bg: var(--black);
-        --accordion-title-background: var(--black);
-        --accordion-open-title-background: var(--gray);
-        --border: 1px solid var(--gray);
-        }
-
-        body {
-        background: var(--bg);
-        color: var(--font);
-        font-family: Arial, sans-serif;
-        }
-
-        .theme-toggle {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 35px;
-            height: 35px;
-            border: var(--border);
-            border-radius: 9999px;
-            background: var(--button-bg);
-            color: var(--font);
-            cursor: pointer;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .icon {
-        position: absolute;
-        display: grid;
-        place-items: center;
-        filter: blur(0px);
-        }
-
-        .icon svg {
-        width: 16px;
-        height: 16px;
-        }
-
-        .icon-moon {
-        opacity: 1;
-        }
-
-        .icon-sun {
-        opacity: 0;
-        filter: blur(5px);
-        }
-
-        html.dark .icon-moon {
-        opacity: 0;
-        filter: blur(5px);
-        }
-
-        html.dark .icon-sun {
-        opacity: 1;
-        filter: blur(0px);
-        }
-
-        * {
-                    transition: background-color var(--accordion-expand-rate) var(--ease-mode), border-color var(--accordion-expand-rate) var(--ease-mode), transform var(--accordion-expand-rate) var(--ease-mode), opacity var(--accordion-expand-rate) var(--ease-mode), filter var(--accordion-expand-rate) var(--ease-mode), color var(--accordion-expand-rate) var(--ease-mode);
-                    /*
-                    -webkit-transition: opacity .3s ease-out;
-            -moz-transition: opacity .3s ease-out;
-            -ms-transition: opacity .3s ease-out;
-            -o-transition: opacity .3s ease-out;
-            transition: opacity .3s ease-out;
-            */
-        }
-
-
-
+        <div class="navTR fontM">
+            <!--
+            <img src="assets/logo.png" alt="" style="max-height: 100px;">
+            -->
+        </div>
+        <!--
+        <a class="navBL fontM" href="info/">info</a>
         
-
-
-        .column {
-  float: left;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-}
-
-.left {
-  width: 25%;
-}
-
-.right {
-  width: 75%;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.columnSmall {
-  float: left;
-  width: 33%;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-}
-
-    </style>
-</head>
-<body>
-    <div id="main">
-        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-            <span class="icon icon-moon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-stars-fill" viewBox="0 0 16 16">
-                    <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/>
-                    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
+        <div class="lightbox">
+            <svg class="lightboxClose" viewBox="-1 -1 18 17.5">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+            </svg>
+            <svg class="lightboxPrev" viewBox="-1 -1 18 17.5">
+                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+            </svg>
+            <svg class="lightboxNext" viewBox="-1 -1 18 17.5">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+            <img src="" class="lightboxSrc" title="&#169; tim ott" alt="&#169; tim ott">
+            <p class="lightboxCount fontM"></p>
+        </div>
+        <div class="navBR">
+            <svg id="svgMail" viewBox="-2 -1.5 20 20" onclick="mail();">
+                <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2zm3.708 6.208L1 11.105V5.383zM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2z"/>
+                <path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
+            </svg>
+            <svg id="svgTel" viewBox="-3 -3 22 22" onclick="tel();">
+                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+            </svg>
+            <a href="https://www.instagram.com/timott.ch" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg id="svgSocial" viewBox="-4 -4 24 24">
+                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
                 </svg>
-            </span>
-
-            <span class="icon icon-sun">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
-                    <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
-                </svg>
-            </span>
-        </button>
-        <accordion-fan>
-            <accordion-element data-title="KURSE" data-group="groupA" data-open>
-                <ul>
-                    <li><a href="kurse/kleinkinder">Kleinkinder</a></li>
-                    <li><a href="kurse/kindergarten-kinder">Kindergarten-Kinder</a></li>
-                    <li><a href="kurse/schulkinder">Schulkinder</a></li>
-                    <li><a href="kurse/erwachsene">Erwachsene</a></li>
-                    <li><a href="kurse/boden-luftakrobatik">Boden-/Luftakrobatik</a></li>
-                </ul>
-                <ul>
-                    <li>Samstagstraining</li>
-                    <li>Ferienkursangebote</li>
-                    <li>Workshops</li>
-                    <li>Aufführungsprojekt "Weihnachtszauber"</li>
-                </ul>
-                <ul>
-                    <li>Kursanmeldung</li>
-                    <li>Allgemeine Kursbestimmungen</li>
-                </ul>
-
-
-
-                <div class="row">
-                    <div class="column left" style="background-color:#aaa;">
-                        <h2>Column 1</h2>
-                        <p>Some text..</p>
-                    </div>
-                    <div class="column right" style="background-color:#bbb;">
-                        <h2>Column 2</h2>
-                        <div class="columnSmall" style="background-color:#aaa;">
-                            <h2>Column 1</h2>
-                            <p>Some text..</p>
-                        </div>
-                        <div class="columnSmall" style="background-color:#bbb;">
-                            <h2>Column 2</h2>
-                            <p>Some text..</p>
-                        </div>
-                        <div class="columnSmall" style="background-color:#bbb;">
-                            <h2>Column 2</h2>
-                            <p>Some text..</p>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
-            </accordion-element>
-
-            <accordion-element data-title="Stundenplan" data-group="groupA">
-                <iframe
-                    src="https://zirkusschulebasel.ch/wp-content/uploads/2026/06/ZSB-Stundenplan-Schuljahr-2026-2027.pdf#pagemode=none&view=Fit"
-                    style="width: calc(100vw - 1em); aspect-ratio: 297 / 210; border: 0;"
-                    loading="lazy">
-                </iframe>
-            </accordion-element>
-
-            <accordion-element data-title="Schnuppern" data-group="groupA">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            </accordion-element>
-
-            <accordion-element data-title="Über uns" data-group="groupA">
-                <ul style="height: 500px;">
-                    <li>Leitbild</li>
-                    <li>Team</li>
-                    <li>Betriebsverein</li>
-                    <li>Adresse / Kontakt</li>
-                    <li>So finden Sie uns</li>
-                </ul>
-            </accordion-element>
-            <accordion-element data-title="Zirkus Rägeboge" data-group="groupA">
-                <ul>
-                    <accordion-element data-title="Trainigskalender" data-group="groupA">
-                        <iframe
-                            src="https://zirkusschulebasel.ch/wp-content/uploads/2026/03/Kalender-ZR-2025-2026-V5xlsx-2.pdf#pagemode=thumbs&view=Fit"
-                            style="width: 100%; aspect-ratio: 297 / 210; border: 0;"
-                            loading="lazy">
-                        </iframe>
-                    </accordion-element>
-                    <li>Programmarchiv</li>
-                    <li>Presse</li>
-                    <li>Teilnahmebedingungen</li>
-                </ul>
-            </accordion-element>
-
-            <accordion-element data-title="Vermietungen" data-group="groupA">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            </accordion-element>
-
-            <accordion-element data-title="Spenden" data-group="groupA">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                <!--
-                <pre>&lt;accordion-element data-title="Opening This One Does Not Close The Others" data-group="test"&gt;&lt;/accordion-element&gt;</pre>
-                -->
-            </accordion-element>
-        </accordion-fan>
-<!--
-        <accordion-element data-title="nested">
-            <accordion-element data-title="Just use the data-group attribute" data-group="nested">
-            </accordion-element>
-
-            <accordion-element data-title="Inner Accordions dynamically size the parent accordion's height" data-group="nested">
-                <ul>
-                    <li>001</li>
-                    <li>002</li>
-                    <li>003</li>
-                </ul>
-            </accordion-element>
-
-            <accordion-element data-title="Closing the parent accordion closes all open child accordions" data-group="nested">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>header 1</th>
-                            <th>header 2</th>
-                            <th>header 3</th>
-                            <th>header 4</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>cell 1</td><td>cell 2</td><td>cell 3</td><td>cell 4</td></tr>
-                        <tr><td>cell 1</td><td>cell 2</td><td>cell 3</td><td>cell 4</td></tr>
-                        <tr><td>cell 1</td><td>cell 2</td><td>cell 3</td><td>cell 4</td></tr>
-                    </tbody>
-                </table>
-            </accordion-element>
-        </accordion-element>
+            </a>
+        </div>
         -->
-    </div>
-    <script>
-        const toggleBtn = document.getElementById("themeToggle");
-        toggleBtn.addEventListener("click", () => {
-            document.documentElement.classList.toggle("dark");
-        });
-    </script>
-    <script>
-        // A custom accordion element that opens and closes its own content.
-        class AccordionElement extends HTMLElement {
-            constructor() {
-                super();
+        <div class="container">
+            <a href="kapitel/" style="margin-left: 35px;">weiter</a>
+<!--
 
-                // Track whether this accordion is open.
-                this.isOpenValue = false;
+            <svg class="exception" width="400px" height="400px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="fill: rgb(255, 102, 0);">
+                <circle cx="0px" cy="200px" r="200px"/>
+            </svg>
+            <svg class="exception" width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" style="margin-top: 400px;">
+                <rect x="0" y="0" width="800" height="400" rx="200"/>
+            </svg>
+            <svg class="exception pulse" width="200px" height="200px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="margin-left: 400px;">
+                <circle cx="200px" cy="200px" r="200px"/>
+            </svg>
+            <svg class="exception pulse" width="200px" height="200px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="margin-left: 600px;">
+                <circle cx="200px" cy="200px" r="200px"/>
+            </svg>
+            <svg class="exception pulse" width="200px" height="200px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="margin-left: 600px; margin-top: 200px;">
+                <circle cx="200px" cy="200px" r="200px"/>
+            </svg>
+            <svg class="exception pulse" width="200px" height="200px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="margin-left: 800px; margin-top: 200px;">
+                <circle cx="200px" cy="200px" r="200px"/>
+            </svg>
+            <svg class="exception pulse" width="200px" height="200px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="margin-left: 800px; margin-top: 400px;">
+                <circle cx="200px" cy="200px" r="200px"/>
+            </svg>
+            <svg class="exception pulse" width="200px" height="200px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="margin-left: 800px; margin-top: 600px;">
+                <circle cx="200px" cy="200px" r="200px"/>
+            </svg>
+            <svg class="exception" width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" style="margin-left: 1000px;">
+                <rect x="0" y="-200" width="800" height="400" rx="200"/>
+            </svg>
+            <svg class="exception" width="400px" height="400px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="margin-left: 1000px; margin-top: 200px;">
+                <circle cx="200px" cy="400px" r="200px"/>
+            </svg>
+            <svg class="exception pulse" width="200px" height="200px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="margin-left: 1400px; margin-top: 600px;">
+                <circle cx="200px" cy="200px" r="200px"/>
+            </svg>
+            <svg class="exception pulse" width="200px" height="200px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="margin-left: 1600px; margin-top: 600px;">
+                <circle cx="200px" cy="200px" r="200px"/>
+            </svg>
+            <svg class="exception pulse" width="200px" height="200px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="margin-left: 1600px; margin-top: 400px;">
+                <circle cx="200px" cy="200px" r="200px"/>
+            </svg>
 
-                // Store references to the parts we create.
-                this.titleElement = null;
-                this.bodyElement = null;
-                this.contentElement = null;
-                this.observer = null;
-                this.chevronElement = null;
-            }
+-->
 
-            // Runs when the element appears in the page.
-            connectedCallback() {
-                // Do nothing if this accordion was already set up.
-                if (this.isInitialized) {
-                    return;
-                }
-                this.isInitialized = true;
-
-                // Read the title text from the data-title attribute.
-                const titleText = this.dataset.title || "";
-
-                // Create the clickable title bar.
-                const titleElement = document.createElement("div");
-                titleElement.className = "accordion-title";
-
-                // Create the title text span.
-                const titleTextElement = document.createElement("span");
-                titleTextElement.className = "accordion-title-text";
-                titleTextElement.textContent = titleText;
-
-                // Create the chevron icon using SVG.
-                const chevronElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-                chevronElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-                chevronElement.setAttribute("width", "16");
-                chevronElement.setAttribute("height", "16");
-                chevronElement.setAttribute("fill", "currentColor");
-                chevronElement.setAttribute("class", "bi bi-chevron-down chevron-icon");
-                chevronElement.innerHTML = '<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>';
-
-                // Put the text and icon inside the title bar.
-                titleElement.appendChild(titleTextElement);
-                titleElement.appendChild(chevronElement);
-
-                // Open and close the accordion when the title is clicked.
-                titleElement.addEventListener("click", () => {
-                    this.toggleAccordion();
-                });
-
-                // Create the body area that expands and collapses.
-                const bodyElement = document.createElement("div");
-                bodyElement.className = "accordion-body";
-
-                // Create a wrapper for the original content.
-                const contentElement = document.createElement("div");
-                contentElement.className = "accordion-content";
-
-                // Move all existing child nodes into the content wrapper.
-                while (this.firstChild) {
-                    contentElement.appendChild(this.firstChild);
-                }
-
-                // Build the accordion structure.
-                bodyElement.appendChild(contentElement);
-                this.appendChild(titleElement);
-                this.appendChild(bodyElement);
-
-                // Save references for later use.
-                this.titleElement = titleElement;
-                this.bodyElement = bodyElement;
-                this.contentElement = contentElement;
-                this.chevronElement = chevronElement;
-
-                // Start open if the data-open attribute exists.
-                if (this.hasAttribute("data-open")) {
-                    this.openAccordion(false);
-                } else {
-                    this.bodyElement.style.height = "0px";
-                }
-
-                // Watch for content changes so the height stays correct.
-                this.observer = new MutationObserver(() => {
-                    if (this.isOpenValue) {
-                        this.updateBodyHeight();
-                    }
-                });
-
-                this.observer.observe(this, { childList: true, subtree: true });
-            }
-
-            // Clean up when the element is removed from the page.
-            disconnectedCallback() {
-                if (this.observer) {
-                    this.observer.disconnect();
-                }
-            }
-
-            // Return whether this accordion is open.
-            get isOpen() {
-                return this.isOpenValue;
-            }
-
-            // Return the group name from data-group.
-            get groupName() {
-                return (this.dataset.group || "").toLowerCase();
-            }
-
-            // Open the accordion.
-            openAccordion(animate = true) {
-                const groupName = this.groupName;
-
-                // If this accordion belongs to a group, close the others in that group.
-                if (groupName) {
-                    const otherAccordionsInGroup = document.querySelectorAll(
-                        `accordion-element[data-group="${this.dataset.group}"]`
-                    );
-
-                    otherAccordionsInGroup.forEach((accordionElement) => {
-                        if (accordionElement !== this) {
-                            accordionElement.closeAccordion();
-                        }
-                    });
-                }
-
-                this.isOpenValue = true;
-                this.classList.add("open");
-
-                // Open without animation if requested.
-                if (!animate) {
-                    this.bodyElement.style.transition = "none";
-                    this.bodyElement.style.height = "auto";
-
-                    requestAnimationFrame(() => {
-                        this.bodyElement.style.transition = "";
-                    });
-
-                    return;
-                }
-
-                // Animate to the full height.
-                this.bodyElement.style.height = this.bodyElement.scrollHeight + "px";
-
-                const handleTransitionEnd = () => {
-                    if (!this.isOpenValue) {
-                        return;
-                    }
-
-                    this.bodyElement.style.height = "auto";
-                    this.bodyElement.removeEventListener("transitionend", handleTransitionEnd);
-                };
-
-                this.bodyElement.addEventListener("transitionend", handleTransitionEnd);
-            }
-
-            // Close the accordion and any nested accordions inside it.
-            closeAccordion() {
-                if (!this.isOpenValue) {
-                    return;
-                }
-
-                this.isOpenValue = false;
-
-                // Set the current height first so the collapse animation starts smoothly.
-                const currentHeight = this.bodyElement.scrollHeight;
-                this.bodyElement.style.height = currentHeight + "px";
-
-                // Force the browser to notice the height before collapsing.
-                void this.bodyElement.offsetWidth;
-
-                // Collapse on the next frame.
-                requestAnimationFrame(() => {
-                    this.classList.remove("open");
-                    this.bodyElement.style.height = "0px";
-                });
-
-                // Close nested accordions too.
-                this.querySelectorAll("accordion-element").forEach((childAccordion) => {
-                    childAccordion.closeAccordion();
-                });
-            }
-
-            // Switch between open and closed.
-            toggleAccordion() {
-                if (this.isOpenValue) {
-                    this.closeAccordion();
-                } else {
-                    this.openAccordion(true);
-                }
-            }
-
-            // Update the height so open content fits correctly.
-            updateBodyHeight() {
-                this.bodyElement.style.height = "auto";
-                this.bodyElement.style.height = this.bodyElement.scrollHeight + "px";
-            }
-        }
-
-        // A wrapper that puts all direct child accordions into the same group.
-        class AccordionFan extends HTMLElement {
-            connectedCallback() {
-                if (this.isInitialized) {
-                    return;
-                }
-                this.isInitialized = true;
-
-                const childAccordionElements = Array.from(
-                    this.querySelectorAll(":scope > accordion-element")
-                );
-                const groupName = `fan-${Date.now()}-${Math.random().toString(36).slice(2)}`;
-
-                childAccordionElements.forEach((accordionElement) => {
-                    accordionElement.dataset.group = groupName;
-                });
-            }
-        }
-
-        // Register the custom elements once.
-        if (!customElements.get("accordion-element")) {
-            customElements.define("accordion-element", AccordionElement);
-        }
-
-        if (!customElements.get("accordion-fan")) {
-            customElements.define("accordion-fan", AccordionFan);
-        }
-    </script>
-
-
-
-
-
-
-
-
-<script>
+            <div class="gridContainer kurseA">
+            </div>
+            <div class="gridContainer kurseB">
+            </div>
+            <div class="gridContainer kurseC">
+            </div>
+        </div>
+        <script src="js/preloadImages.min.js"></script>
+        <script src="js/preventDrag.min.js"></script>
+        <script src="js/pageFader.min.js"></script>
+        <script src="js/lightbox.min.js"></script>
+        <script src="js/contact.min.js"></script>
+        <script>
 (function() {
     let sqOverlayStyle = null;
 
@@ -732,7 +173,7 @@
     checkbox.id = 'sqOverlayCheckbox';
     checkbox.style.position = 'fixed';
     checkbox.style.top = '10px';
-    checkbox.style.left = '95vw';
+    checkbox.style.left = '10px';
     checkbox.style.zIndex = '1000001';
 
     // Label (optional)
@@ -754,6 +195,16 @@
             sqOverlayStyle = document.createElement('style');
             sqOverlayStyle.id = 'sq-overlay';
             sqOverlayStyle.textContent = `
+                .SQ {
+                    background-color: rgba(0, 255, 0, .15);
+                    z-index: 99;
+                    position: fixed;
+                    user-select: none;
+                    pointer-events: none;
+                    width: calc(100vw - calc((var(--maxWidth) / var(--baseValue)) * 2));
+                    height: calc(100vh - calc((var(--maxWidth) / var(--baseValue)) * 2));
+                    margin: calc((var(--maxWidth) / var(--baseValue)) * 1);
+                }
                 div, a, svg, p, img, * {
                     background-color: rgba(255, 0, 0, .15);
                 }
@@ -769,5 +220,93 @@
     checkbox.addEventListener('change', toggleSQOverlay);
 })();
 </script>
-</body>
+
+
+<!--
+        <script src="js/editor.js"></script>
+                -->
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const targetSVGs = [...document.querySelectorAll('.pulse')].filter(svg => {
+                            return svg.querySelector('circle, rect');
+                        });
+
+                        if (targetSVGs.length === 0) {
+                            console.log('No pulsing SVGs found.');
+                            return;
+                        }
+
+                        console.log(`Found ${targetSVGs.length} pulsing SVG(s)`);
+
+                        // Configuration - Start AT 100%
+                        const config = {
+                            baseScale: 1.0,       // Starting point is exactly 100%
+                            minScale: .5,       // Shrink to 85% during pulse
+                            maxScale: 1,       // Grow to 115% during pulse  
+                            baseDuration: 4000,   // Base animation duration in ms
+                            phaseOffset: true,    // Randomize animation start phases
+                            animateGroup: false   // If true, entire SVG pulses; else each shape
+                        };
+
+                        targetSVGs.forEach((svg, svgIndex) => {
+                            const shapes = svg.querySelectorAll('circle, rect');
+                            
+                            shapes.forEach((shape, shapeIndex) => {
+                                // Set transform origin for proper scaling
+                                if (shape.tagName === 'circle') {
+                                    const cx = shape.getAttribute('cx') || '50%';
+                                    const cy = shape.getAttribute('cy') || '50%';
+                                    shape.style.transformOrigin = `${cx} ${cy}`;
+                                } else if (shape.tagName === 'rect') {
+                                    shape.style.transformOrigin = 'center center';
+                                }
+
+                                // Randomized pulse parameters per element
+                                const randomPhase = config.phaseOffset ? Math.random() * config.baseDuration : 0;
+                                const randomDuration = config.baseDuration * (0.8 + Math.random() * .4);
+                                
+                                // Animation timing - starts AT 100%, then pulses down/up
+                                const animationName = `pulse-${shapeIndex}-${svgIndex}`;
+                                
+                                Object.assign(shape.style, {
+                                    'animation': `${animationName} ${randomDuration}ms ease-in-out infinite`,
+                                    'animation-delay': `${randomPhase}ms`,
+                                    '--base-scale': `${config.baseScale}`,
+                                    '--min-scale': `${config.minScale}`,
+                                    '--max-scale': `${config.maxScale}`
+                                });
+
+                                // Inject keyframes - STARTS at 100%
+                                const keyframeStyle = document.createElement('style');
+                                keyframeStyle.textContent = `
+                                    @keyframes ${animationName} {
+                                        0% {
+                                            transform: scale(${config.baseScale});
+                                        }
+                                        25% {
+                                            transform: scale(${config.minScale});
+                                        }
+                                        75% {
+                                            transform: scale(${config.maxScale});
+                                        }
+                                        100% {
+                                            transform: scale(${config.baseScale});
+                                        }
+                                    }
+                                `;
+                                document.head.appendChild(keyframeStyle);
+                            });
+                        });
+                    });
+                </script>
+
+
+
+
+
+
+
+
+    </body>
 </html>
