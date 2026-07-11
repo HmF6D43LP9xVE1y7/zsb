@@ -769,7 +769,7 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     align-items: center;
     white-space: nowrap;
     width: 100vw;
-    padding-left: 340px;
+    padding-left: 200px;
 }
 
 .menu div {
