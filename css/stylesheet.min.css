@@ -729,16 +729,16 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
             /* MENU BAR STYLING */
 .menu {
     position: fixed;
-    top: 20px;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
     background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 12px 24px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 12px 12px;
     border-radius: 12px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
     display: flex;
     gap: 32px;
     align-items: center;
@@ -756,17 +756,18 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     padding: 8px 16px;
     border-radius: 6px;
     user-select: none;
+    margin: 5px;
+    border: 1px black solid;
 }
 
 .menu div:hover {
     opacity: 1;
-    background: rgba(0, 0, 0, 0.04);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .menu div.active {
-    color: #ff0000;
-    font-weight: 500;
-    background: rgba(0, 0, 0, 0.06);
+    color: black;
+    background: rgba(0, 0, 0, 0.1);
 }
 
 /* MOBILE MENU - STACKED */
