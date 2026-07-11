@@ -156,7 +156,8 @@ svg:hover {
 }
 .container {
     position: relative;
-    height: 100vh;
+    height: calc(100vh - 100px); /* changes made */
+    margin-top: 100px; /* changes made */
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-transform: translateZ(0);
@@ -493,6 +494,30 @@ svg:hover {
     .gridContainer:not(:nth-of-type(1)) {
         margin-top: calc((var(--mWbV)) * 3.5);
     }
+    .courses {
+        grid-template-rows: repeat(24, calc(var(--mWbV)));
+    }
+    .bestimmungen {
+        grid-template-rows: repeat(15, calc(var(--mWbV)));
+    }
+    .trial {
+        grid-template-rows: repeat(24, calc(var(--mWbV)));
+    }
+    .zr {
+        grid-template-rows: repeat(24, calc(var(--mWbV)));
+    }
+    .rental {
+        grid-template-rows: repeat(24, calc(var(--mWbV)));
+    }
+    .about {
+        grid-template-rows: repeat(24, calc(var(--mWbV)));
+    }
+    .contact {
+        grid-template-rows: repeat(24, calc(var(--mWbV)));
+    }
+
+
+
     .kurseA {
         grid-template-rows: repeat(32, calc(var(--mWbV)));
     }
@@ -729,8 +754,8 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
             /* MENU BAR STYLING */
 .menu {
     position: fixed;
-    top: 10px;
     left: 50%;
+    top: 10px;
     transform: translateX(-50%);
     z-index: 1000;
     background: rgba(255, 255, 255, 0.8);
@@ -743,6 +768,8 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     gap: 32px;
     align-items: center;
     white-space: nowrap;
+    width: 100vw;
+    padding-left: 340px;
 }
 
 .menu div {
@@ -766,8 +793,8 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 }
 
 .menu div.active {
-    color: black;
-    background: rgba(0, 0, 0, 0.1);
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 /* MOBILE MENU - STACKED */
