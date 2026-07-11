@@ -137,71 +137,76 @@
         <script src="js/lightbox.min.js"></script>
         <script src="js/contact.min.js"></script>
         <script>
-            const container = document.querySelector('.container');
-            const menuLinks = document.querySelectorAll('.menu-link');
+    const container = document.querySelector('.container');
+    const sections = Array.from(document.querySelectorAll('.menu-link')).map(link => ({
+        link,
+        el: document.getElementById(link.dataset.target)
+    })).filter(s => s.el);
 
-            function setActive() {
-            const y = container.scrollTop;
-            const thresholds = [];
+    let currentActive = -1;
+    let isAnimating = false;
+    let debounceTimer = null;
 
-            // Collect all threshold percentages
-            menuLinks.forEach(link => {
-                const targetEl = document.getElementById(link.dataset.target);
-                if (targetEl) {
-                    thresholds.push({
-                        link: link,
-                        threshold: targetEl.offsetTop / container.scrollHeight
-                    });
-                }
-            });
+    function getVisiblePixels(el, top, height) {
+        const start = Math.max(top, el.offsetTop);
+        const end = Math.min(top + height, el.offsetTop + el.offsetHeight);
+        return Math.max(0, end - start);
+    }
 
-            thresholds.sort((a, b) => a.threshold - b.threshold);
-
-            // Find current active link - include last threshold as inclusive
-            let activeIndex = 0;
-            const scrollPercent = y / container.scrollHeight;
-
-            for (let i = 0; i < thresholds.length; i++) {
-                const isLast = i === thresholds.length - 1;
-                
-                if (isLast) {
-                    // Last threshold: check if we're at or past it
-                    if (scrollPercent >= thresholds[i].threshold) {
-                        activeIndex = i;
-                        break;
-                    }
-                } else {
-                    // Regular threshold: check if we're in this range
-                    if (scrollPercent >= thresholds[i].threshold && 
-                        scrollPercent < thresholds[i + 1].threshold) {
-                        activeIndex = i;
-                        break;
-                    }
-                }
+    function findMostVisible() {
+        const top = container.scrollTop;
+        const height = container.clientHeight;
+        
+        let bestIndex = -1;
+        let maxPixels = height * 0.3; // 30% threshold
+        
+        sections.forEach((sec, i) => {
+            const pixels = getVisiblePixels(sec.el, top, height);
+            if (pixels > maxPixels) {
+                maxPixels = pixels;
+                bestIndex = i;
             }
+        });
+        
+        return bestIndex;
+    }
 
-            menuLinks.forEach((link, i) => {
-                if (i === activeIndex) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
+    function updateActive(newIndex) {
+        if (newIndex === -1 || newIndex === currentActive) return;
+        
+        sections.forEach((sec, i) => {
+            sec.link.classList.toggle('active', i === newIndex);
+        });
+        currentActive = newIndex;
+    }
+
+    function onScroll() {
+        if (isAnimating) {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                isAnimating = false;
+                updateActive(findMostVisible());
+            }, 150);
+        } else {
+            updateActive(findMostVisible());
         }
+    }
 
-            // Attach listeners
-            container.addEventListener('scroll', setActive);
-            window.addEventListener('resize', setActive);
-            setTimeout(setActive, 100); // Initial call with delay for layout
+    sections.forEach((sec, i) => {
+        sec.link.addEventListener('click', (e) => {
+            e.preventDefault();
+            updateActive(i);
+            isAnimating = true;
+            clearTimeout(debounceTimer);
+            sec.el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
 
-            // Auto-click handlers
-            menuLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    document.getElementById(link.dataset.target)?.scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-        </script>
+    container.addEventListener('scroll', onScroll);
+    window.addEventListener('resize', onScroll);
+    
+    setTimeout(onScroll, 100);
+</script>
         <script>
         (function() {
             let sqOverlayStyle = null;
@@ -271,80 +276,7 @@
         <script src="js/editor.js"></script>
                 -->
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const targetSVGs = [...document.querySelectorAll('.pulse')].filter(svg => {
-                    return svg.querySelector('circle, rect');
-                });
 
-                if (targetSVGs.length === 0) {
-                    console.log('No pulsing SVGs found.');
-                    return;
-                }
-
-                console.log(`Found ${targetSVGs.length} pulsing SVG(s)`);
-
-                // Configuration - Start AT 100%
-                const config = {
-                    baseScale: 1.0,       // Starting point is exactly 100%
-                    minScale: .5,       // Shrink to 85% during pulse
-                    maxScale: 1,       // Grow to 115% during pulse  
-                    baseDuration: 4000,   // Base animation duration in ms
-                    phaseOffset: true,    // Randomize animation start phases
-                    animateGroup: false   // If true, entire SVG pulses; else each shape
-                };
-
-                targetSVGs.forEach((svg, svgIndex) => {
-                    const shapes = svg.querySelectorAll('circle, rect');
-                    
-                    shapes.forEach((shape, shapeIndex) => {
-                        // Set transform origin for proper scaling
-                        if (shape.tagName === 'circle') {
-                            const cx = shape.getAttribute('cx') || '50%';
-                            const cy = shape.getAttribute('cy') || '50%';
-                            shape.style.transformOrigin = `${cx} ${cy}`;
-                        } else if (shape.tagName === 'rect') {
-                            shape.style.transformOrigin = 'center center';
-                        }
-
-                        // Randomized pulse parameters per element
-                        const randomPhase = config.phaseOffset ? Math.random() * config.baseDuration : 0;
-                        const randomDuration = config.baseDuration * (0.8 + Math.random() * .4);
-                        
-                        // Animation timing - starts AT 100%, then pulses down/up
-                        const animationName = `pulse-${shapeIndex}-${svgIndex}`;
-                        
-                        Object.assign(shape.style, {
-                            'animation': `${animationName} ${randomDuration}ms ease-in-out infinite`,
-                            'animation-delay': `${randomPhase}ms`,
-                            '--base-scale': `${config.baseScale}`,
-                            '--min-scale': `${config.minScale}`,
-                            '--max-scale': `${config.maxScale}`
-                        });
-
-                        // Inject keyframes - STARTS at 100%
-                        const keyframeStyle = document.createElement('style');
-                        keyframeStyle.textContent = `
-                            @keyframes ${animationName} {
-                                0% {
-                                    transform: scale(${config.baseScale});
-                                }
-                                25% {
-                                    transform: scale(${config.minScale});
-                                }
-                                75% {
-                                    transform: scale(${config.maxScale});
-                                }
-                                100% {
-                                    transform: scale(${config.baseScale});
-                                }
-                            }
-                        `;
-                        document.head.appendChild(keyframeStyle);
-                    });
-                });
-            });
-        </script>
 
 
 

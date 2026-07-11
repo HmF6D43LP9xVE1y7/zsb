@@ -726,25 +726,80 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 
 
 
-          .menu {
-            position: fixed;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
-            padding: 10px 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            backdrop-filter: blur(4px);
-        }
+            /* MENU BAR STYLING */
+.menu {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 12px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    white-space: nowrap;
+}
 
-  .menu div {
-    display: block;
-    color: #000;
-    text-decoration: none;
-    margin: 6px 0;
-    font-size: 16px;
-  }
+.menu div {
+    color: var(--black);
+    font-family: "din-2014", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 6px;
+    user-select: none;
+}
 
-  .menu div.active {
-    color: red;
-    font-weight: bold;
-  }
+.menu div:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.menu div.active {
+    color: #ff0000;
+    font-weight: 500;
+    background: rgba(0, 0, 0, 0.06);
+}
+
+/* MOBILE MENU - STACKED */
+@media only screen and (max-width:767.9px) {
+    .menu {
+        top: 16px;
+        left: 16px;
+        right: 16px;
+        transform: none;
+        padding: 10px 16px;
+        gap: 8px;
+        justify-content: space-between;
+    }
+    
+    .menu div {
+        font-size: 12px;
+        padding: 6px 10px;
+        flex: 1;
+        text-align: center;
+        border-radius: 4px;
+    }
+}
+
+/* TABLET */
+@media only screen and (min-width:768px) and (max-width:1159.9px) {
+    .menu {
+        top: 24px;
+        gap: 24px;
+        padding: 12px 20px;
+    }
+    
+    .menu div {
+        font-size: 13px;
+        padding: 8px 14px;
+    }
+}
