@@ -64,11 +64,11 @@ div, a, svg, p, img {
     margin: 0;
     border: 0;
     border-spacing: 0;
-    -webkit-transition: opacity .3s ease-out;
-    -moz-transition: opacity .3s ease-out;
-    -ms-transition: opacity .3s ease-out;
-    -o-transition: opacity .3s ease-out;
-    transition: opacity .3s ease-out;
+    -webkit-transition: opacity .15s ease-out;
+    -moz-transition: opacity .15s ease-out;
+    -ms-transition: opacity .15s ease-out;
+    -o-transition: opacity .15s ease-out;
+    transition: opacity .15s ease-out;
     font-size: 100%;
     text-align: left;
     text-transform: none;
@@ -156,8 +156,8 @@ svg:hover {
 }
 .container {
     position: relative;
-    height: calc(100vh - 100px); /* changes made */
-    margin-top: 100px; /* changes made */
+    height: calc(100vh - 74px); /* changes made */
+    margin-top: 74px; /* changes made */
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-transform: translateZ(0);
@@ -561,7 +561,11 @@ svg:hover {
 }
 
 /* FONT SETTINGS */
-
+.fontXS {
+    font-size: calc((var(--mWbV)) * .225); /* base value = x0.5 */
+    line-height: calc((var(--mWbV)) * .25);
+    margin-bottom: calc((var(--mWbV)) * 1);
+}
 .fontS {
     font-size: calc((var(--mWbV)) * .45); /* base value = x1 */
     line-height: calc((var(--mWbV)) * .5);
@@ -751,40 +755,48 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 
 
 
-            /* MENU BAR STYLING */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Desktop: keep current look */
 .menu {
     position: fixed;
-    left: 50%;
-    top: 10px;
-    transform: translateX(-50%);
     z-index: 1000;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    padding: 12px 12px;
-    border-radius: 12px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    padding: calc((var(--mWbV)) * .25) calc((var(--mWbV)) * .25);
+    box-shadow: 0 0px 35px rgba(0, 0, 0, 0.1);
     display: flex;
-    gap: 32px;
-    align-items: center;
-    white-space: nowrap;
     width: 100vw;
-    padding-left: 200px;
+    padding-left: calc((var(--mWbV)) * 8);
+    top: 0;
+    gap: 0;
+    font-size: calc((var(--mWbV)) * .225); /* base value = x0.5 */
+    line-height: calc((var(--mWbV)) * .25);
+    margin-bottom: calc((var(--mWbV)) * 1);
 }
 
 .menu div {
     color: var(--black);
-    font-family: "din-2014", sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
     cursor: pointer;
-    padding: 8px 16px;
-    border-radius: 6px;
+    padding: calc((var(--mWbV)) * .125) calc((var(--mWbV)) * .25);
+    border-radius: 16px;
     user-select: none;
-    margin: 5px;
-    border: 1px black solid;
+    margin: calc((var(--mWbV)) * .125);
+    border: 1px gray solid;
 }
 
 .menu div:hover {
@@ -797,37 +809,106 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     background: rgba(0, 0, 0, 0.5);
 }
 
-/* MOBILE MENU - STACKED */
-@media only screen and (max-width:767.9px) {
-    .menu {
-        top: 16px;
-        left: 16px;
-        right: 16px;
-        transform: none;
-        padding: 10px 16px;
-        gap: 8px;
-        justify-content: space-between;
-    }
-    
-    .menu div {
-        font-size: 12px;
-        padding: 6px 10px;
-        flex: 1;
-        text-align: center;
-        border-radius: 4px;
-    }
+/* Hide toggle on desktop */
+.menu-toggle,
+.menu-button {
+    display: none;
 }
 
-/* TABLET */
-@media only screen and (min-width:768px) and (max-width:1159.9px) {
-    .menu {
-        top: 24px;
-        gap: 24px;
-        padding: 12px 20px;
+@media only screen and (max-width:767.9px) {
+    .menu-button {
+        display: flex;
+        position: fixed;
+        bottom: 16px;
+        right: 16px;
+        z-index: 1002;
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 0px 20px rgba(0, 0, 0, 0.12);
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
     }
-    
+
+    .menu-button svg {
+        width: 20px;
+        height: 20px;
+        display: block;
+    }
+
+    .menu-button .icon-close {
+        display: none;
+    }
+
+    .menu-toggle:checked + .menu-button .icon-open {
+        display: none;
+    }
+
+    .menu-toggle:checked + .menu-button .icon-close {
+        display: block;
+    }
+
+    .menu {
+        position: fixed;
+        inset: 0;
+        z-index: 1001;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 80px 20px 20px;
+        background: rgba(255, 255, 255, 1);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        overflow: hidden;
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+            -webkit-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
+            -moz-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
+            -ms-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
+            -o-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
+            transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
+
+
+    font-size: calc((var(--mWbV)) * .675); /* base value x1.5 */
+    line-height: calc((var(--mWbV)) * .75);
+    margin-bottom: calc((var(--mWbV)) * 1);
+
+    transform: scale(95%);
+    }
+
+    .menu-toggle:checked ~ .menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        
+            -webkit-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
+            -moz-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
+            -ms-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
+            -o-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
+            transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
+
+            transform: scale(100%);
+    }
+
     .menu div {
-        font-size: 13px;
-        padding: 8px 14px;
+        width: 100%;
+        margin: 0;
+        padding: 14px 16px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    body:has(.menu-toggle:checked) {
+        overflow: hidden;
+        touch-action: none;
     }
 }
