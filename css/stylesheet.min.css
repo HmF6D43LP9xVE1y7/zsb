@@ -766,8 +766,6 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 
 
 
-
-
 /* Desktop: keep current look */
 .menu {
     position: fixed;
@@ -782,7 +780,6 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     padding-left: calc((var(--mWbV)) * 8);
     top: 0;
     gap: 0;
-
 }
 
 .menu div {
@@ -792,7 +789,8 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     border-radius: 16px;
     user-select: none;
     margin: calc((var(--mWbV)) * .125);
-    border: 1px gray solid;
+    border: 1px black solid;
+    margin-bottom: 5px !important;
 }
 
 .menu div:hover {
@@ -802,61 +800,117 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 
 .menu div.active {
     color: white;
-    background: rgba(0, 0, 0, 0.5);
+    background: #d93737;
 }
 
-/* Hide toggle on desktop */
+/* Hide checkbox on desktop */
 .menu-toggle,
-.menu-button {
+.menu-toggle-btn {
     display: none;
 }
 
+/* New 3D Menu Button Styles */
+.menu-toggle-btn {
+    --front: rgba(0, 0, 0, 1);
+    --back: #d93737;
+    --icon: white;
+    perspective: 600px;
+    width: 48px;
+    height: 48px;
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 1002;
+    display: none;
+}
+
+.menu-toggle-btn input {
+    display: none;
+}
+
+.menu-toggle-btn div {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.menu-toggle-btn div span {
+    --rotateY: 0deg;
+    --background: var(--front);
+    transform: rotateY(var(--rotateY));
+    transform-style: preserve-3d;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--background);
+    backface-visibility: hidden;
+    transition: transform .6s cubic-bezier(.2, .64, .48, 1.24);
+    /* Halbtransparent statt vollfarbig */
+    backdrop-filter: blur(5px);              /* Blur-Effekt */
+    -webkit-backdrop-filter: blur(5px);      /* Safari-Kompatibilität */
+}
+
+.menu-toggle-btn div span:before,
+.menu-toggle-btn div span:after {
+    --rotate: 0deg;
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    border-radius: 1px;
+    top: 50%;
+    left: 50%;
+    background: var(--icon);
+    backface-visibility: hidden;
+    transform: translate(-50%, -50%) rotate(var(--rotate)) translateZ(6px);
+}
+
+.menu-toggle-btn div span:first-child {
+    --background: var(--back);
+    --rotateY: 180deg;
+}
+
+.menu-toggle-btn div span:first-child:before {
+    --rotate: -45deg;
+}
+
+.menu-toggle-btn div span:first-child:after {
+    --rotate: 45deg;
+}
+
+.menu-toggle-btn div span:last-child {
+    --rotateY: 0deg;
+}
+
+.menu-toggle-btn div span:last-child:before {
+    box-shadow: 0 -5px 0 var(--icon), 0 5px 0 var(--icon);
+}
+
+.menu-toggle-btn div span:last-child:after {
+    display: none;
+}
+
+.menu-toggle-btn input:checked + div span:first-child {
+    --rotateY: 0deg;
+}
+.menu-toggle-btn input:checked + div span:last-child {
+    --rotateY: -180deg;
+}
+
+/* Mobile View */
 @media only screen and (max-width: 767.9px) {
-    .menu-button {
+    .menu-toggle-btn {
         display: flex;
-        position: fixed;
-        bottom: 16px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1002;
-        width: 35px;
-        height: 35px;
-        align-items: center;
-        justify-content: center;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.5);
-        box-shadow: 0 5px 35px rgba(0, 0, 0, 0.25);
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-        transform-origin: center center;
-        transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
     }
 
-
-
-    .menu-button .icon-open {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transform-origin: center center;
-        transition: transform 0.15s ease-out;
-    }
-
-    .menu-button svg {
-        width: 50%;
-        height: 50%;
-        display: block;
-        transform-origin: center center;
-        transition: transform 0.15s ease-out;
-    }
-
-    /* Rotate the plus icon */
-    .menu-toggle:checked + .menu-button .icon-open {
-        transform: rotate(45deg);
+    .menu-toggle-btn:hover {
+        opacity: 1;
     }
 
     .menu {
@@ -874,18 +928,14 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
         align-items: stretch;
         gap: 10px;
         overflow: hidden;
-
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
-
         transition: opacity 0.15s ease, visibility 0.15s ease-out, transform 0.15s ease-out;
-  
-
         transform: scale(1.05);
     }
 
-    .menu-toggle:checked ~ .menu {
+    .menu-toggle-btn:has(input:checked) ~ .menu {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
@@ -900,24 +950,12 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
         text-align: center;
     }
 
-    body:has(.menu-toggle:checked) {
+    body:has(.menu-toggle-btn input:checked) {
         overflow: hidden;
         touch-action: none;
     }
-    /* temp fix below */
-    .menu-button:hover .icon-open {
-        opacity: 0.3;
-        transition: opacity 0.15s ease-out, transform .15s ease-out !important;
-    }
-    .icon-open {
-        transition: opacity 0.15s ease-out, transform .15s ease-out !important;
-    }
-    .icon-open svg {
-        opacity: 1;
-    }
 }
 
-
-
-
-
+span {
+    box-shadow: 0 5px 35px rgba(0, 0, 0, 0.25) !important;
+}
