@@ -782,9 +782,7 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     padding-left: calc((var(--mWbV)) * 8);
     top: 0;
     gap: 0;
-    font-size: calc((var(--mWbV)) * .225);
-    line-height: calc((var(--mWbV)) * .25);
-    margin-bottom: calc((var(--mWbV)) * 1);
+
 }
 
 .menu div {
@@ -882,9 +880,7 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
         pointer-events: none;
 
         transition: opacity 0.15s ease, visibility 0.15s ease-out, transform 0.15s ease-out;
-        font-size: calc((var(--mWbV)) * .675);
-        line-height: calc((var(--mWbV)) * .75);
-        margin-bottom: calc((var(--mWbV)) * 1);
+  
 
         transform: scale(1.05);
     }
@@ -911,12 +907,17 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     /* temp fix below */
     .menu-button:hover .icon-open {
         opacity: 0.3;
-        transition: opacity 0.15s ease-out !important;
+        transition: opacity 0.15s ease-out, transform .15s ease-out !important;
     }
     .icon-open {
-        transition: opacity 0.15s ease-out !important;
+        transition: opacity 0.15s ease-out, transform .15s ease-out !important;
     }
     .icon-open svg {
         opacity: 1;
     }
 }
+
+
+
+
+

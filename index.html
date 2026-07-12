@@ -30,7 +30,7 @@
         <meta property="twitter:description" content="Vom Architekturmodell, über regelmässige Baustellenaufnahmen, bis hin zur umfassenden Schlussdokumentation freue ich mich, Ihre Arbeiten zur Aufwertung Ihres Portfolios nach klaren Vorgaben oder eigener Interpretation festhalten zu dürfen. In der gesamten Schweiz sowie dem angrenzenden Ausland für Ihre Aufträge verfügbar.">
         <meta property="twitter:card" content="summary_large_image">
         <meta property="twitter:image" content="https://timott.ch/assets/wartenbergstrasse/wartenbergstrasse_052c.jpg">
-        <title>Tim Ott &mdash; Architekturfotograf</title>
+        <title>ZSB</title>
         <script type="application/ld+json">
             {
             "@context": "https://schema.org",
@@ -89,7 +89,7 @@
     </span>
 </label>
 
-<nav class="menu">
+<nav class="menu fontS">
     <div class="menu-link active" data-target="courses">Kurse</div>
     <div class="menu-link" data-target="bestimmungen">Kursbestimmungen</div>
     <div class="menu-link" data-target="trial">Schnupper</div>
@@ -264,5 +264,67 @@ document.querySelectorAll('.menu .menu-link').forEach(link => {
 
 
 
+
+
+
+
+
+                <script>
+(function() {
+    let sqOverlayStyle = null;
+
+    // Create checkbox
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = 'sqOverlayCheckbox';
+    checkbox.style.position = 'fixed';
+    checkbox.style.top = '10px';
+    checkbox.style.left = '10px';
+    checkbox.style.zIndex = '1000001';
+
+    // Label (optional)
+    const label = document.createElement('label');
+    label.htmlFor = 'sqOverlayCheckbox';
+    label.style.position = 'fixed';
+    label.style.top = '10px';
+    label.style.left = '35px';
+    label.style.zIndex = '1000001';
+    label.style.fontFamily = 'monospace';
+    label.style.fontSize = '12px';
+
+    document.body.appendChild(checkbox);
+    document.body.appendChild(label);
+
+    // Toggle overlay
+    function toggleSQOverlay() {
+        if (checkbox.checked) {
+            sqOverlayStyle = document.createElement('style');
+            sqOverlayStyle.id = 'sq-overlay';
+            sqOverlayStyle.textContent = `
+                .SQ {
+                    background-color: rgba(0, 255, 0, .15);
+                    z-index: 99;
+                    position: fixed;
+                    user-select: none;
+                    pointer-events: none;
+                    width: calc(100vw - calc((var(--maxWidth) / var(--baseValue)) * 2));
+                    height: calc(100vh - calc((var(--maxWidth) / var(--baseValue)) * 2));
+                    margin: calc((var(--maxWidth) / var(--baseValue)) * 1);
+                }
+                div, a, svg, p, img, * {
+                    background-color: rgba(255, 0, 0, .15);
+                }
+            `;
+            document.head.appendChild(sqOverlayStyle);
+        } else {
+            const existing = document.getElementById('sq-overlay');
+            if (existing) existing.remove();
+            sqOverlayStyle = null;
+        }
+    }
+
+    checkbox.addEventListener('change', toggleSQOverlay);
+})();
+</script>
     </body>
 </html>
