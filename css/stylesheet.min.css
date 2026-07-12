@@ -768,8 +768,6 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 
 
 
-
-
 /* Desktop: keep current look */
 .menu {
     position: fixed;
@@ -784,7 +782,7 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     padding-left: calc((var(--mWbV)) * 8);
     top: 0;
     gap: 0;
-    font-size: calc((var(--mWbV)) * .225); /* base value = x0.5 */
+    font-size: calc((var(--mWbV)) * .225);
     line-height: calc((var(--mWbV)) * .25);
     margin-bottom: calc((var(--mWbV)) * 1);
 }
@@ -815,40 +813,52 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     display: none;
 }
 
-@media only screen and (max-width:767.9px) {
+@media only screen and (max-width: 767.9px) {
     .menu-button {
         display: flex;
         position: fixed;
         bottom: 16px;
-        right: 16px;
+        left: 50%;
+        transform: translateX(-50%);
         z-index: 1002;
-        width: 44px;
-        height: 44px;
+        width: 35px;
+        height: 35px;
         align-items: center;
         justify-content: center;
         border-radius: 10px;
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 0px 20px rgba(0, 0, 0, 0.12);
+        background: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 5px 35px rgba(0, 0, 0, 0.25);
         cursor: pointer;
         -webkit-tap-highlight-color: transparent;
+        transform-origin: center center;
+        transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+
+
+
+    .menu-button .icon-open {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform-origin: center center;
+        transition: transform 0.15s ease-out;
     }
 
     .menu-button svg {
-        width: 20px;
-        height: 20px;
+        width: 50%;
+        height: 50%;
         display: block;
+        transform-origin: center center;
+        transition: transform 0.15s ease-out;
     }
 
-    .menu-button .icon-close {
-        display: none;
-    }
-
+    /* Rotate the plus icon */
     .menu-toggle:checked + .menu-button .icon-open {
-        display: none;
-    }
-
-    .menu-toggle:checked + .menu-button .icon-close {
-        display: block;
+        transform: rotate(45deg);
     }
 
     .menu {
@@ -871,32 +881,19 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
         visibility: hidden;
         pointer-events: none;
 
-            -webkit-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
-            -moz-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
-            -ms-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
-            -o-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
-            transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
+        transition: opacity 0.15s ease, visibility 0.15s ease-out, transform 0.15s ease-out;
+        font-size: calc((var(--mWbV)) * .675);
+        line-height: calc((var(--mWbV)) * .75);
+        margin-bottom: calc((var(--mWbV)) * 1);
 
-
-    font-size: calc((var(--mWbV)) * .675); /* base value x1.5 */
-    line-height: calc((var(--mWbV)) * .75);
-    margin-bottom: calc((var(--mWbV)) * 1);
-
-    transform: scale(95%);
+        transform: scale(1.05);
     }
 
     .menu-toggle:checked ~ .menu {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
-        
-            -webkit-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
-            -moz-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
-            -ms-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
-            -o-transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
-            transition: opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out;
-
-            transform: scale(100%);
+        transform: scale(1);
     }
 
     .menu div {
@@ -910,5 +907,16 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     body:has(.menu-toggle:checked) {
         overflow: hidden;
         touch-action: none;
+    }
+    /* temp fix below */
+    .menu-button:hover .icon-open {
+        opacity: 0.3;
+        transition: opacity 0.15s ease-out !important;
+    }
+    .icon-open {
+        transition: opacity 0.15s ease-out !important;
+    }
+    .icon-open svg {
+        opacity: 1;
     }
 }
