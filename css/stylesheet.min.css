@@ -156,8 +156,8 @@ svg:hover {
 }
 .container {
     position: relative;
-    height: calc(100vh - calc((var(--mWbV)) * 1.55)); /* changes made */
-    margin-top: calc((var(--mWbV)) * 1.55);; /* changes made */
+    height: calc(100vh - calc((var(--mWbV)) * 1.55));
+    margin-top: calc((var(--mWbV)) * 1.55);
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-transform: translateZ(0);
@@ -765,7 +765,7 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 /* Desktop: keep current look */
 :root {
     --front: rgba(0, 0, 0, 1);
-    --back: #d93737;
+    --back: rgb(232, 50, 0);
     --icon: black;
 }
 .menu {
@@ -774,13 +774,13 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     background: rgb(255, 247, 220);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    padding: calc((var(--mWbV)) * .25) calc((var(--mWbV)) * .25);
     box-shadow: 0 0px 35px rgba(0, 0, 0, 0.35);
     display: flex;
     width: 100vw;
     padding-left: calc((var(--mWbV)) * 8);
     top: 0;
     gap: 0;
+    height: calc((var(--mWbV)) * 1.55);
 }
 
 .menu div {
@@ -792,6 +792,8 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     margin: calc((var(--mWbV)) * .125);
     border: 1.35px black solid;
     margin-bottom: 5px !important;
+    height: calc((var(--mWbV)) * .775);
+    margin-top: calc((var(--mWbV)) * .3875);
 }
 
 .menu div:hover {
@@ -921,43 +923,43 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     .menu {
         position: fixed;
         inset: 0;
-        z-index: 1001;
+        z-index: 1000;
         width: 100vw;
         height: 100vh;
         margin: 0;
-        padding: 80px 20px 20px;
+        padding: calc((var(--mWbV)) * 1);
         background: rgb(255, 247, 220);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
         flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
         overflow: hidden;
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
-        transition: opacity 0.15s ease, visibility 0.15s ease-out, transform 0.15s ease-out;
-        transform: scale(1.05);
+        transition: opacity 0.15s ease, visibility 0.15s ease-out;
     }
 
     .menu-toggle-btn:has(input:checked) ~ .menu {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
-        transform: scale(1);
     }
 
     .menu div {
-        width: 100%;
+        width: fit-content;
         margin: 0;
-        padding: 14px 16px;
-        border-radius: 32px;
         text-align: center;
+        font-size: calc((var(--mWbV)) * .675); /* base value x1.5 */
+        line-height: calc((var(--mWbV)) * .75);
+        margin-bottom: calc((var(--mWbV)) * 1);
+        height: fit-content;
     }
 
     body:has(.menu-toggle-btn input:checked) {
         overflow: hidden;
         touch-action: none;
+    }
+    .container {
+        height: 100vh;
+        margin-top: 0;
     }
 }
 
