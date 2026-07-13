@@ -26,7 +26,7 @@
 }
 :root {
     --black: rgba(0, 0, 0, 1);
-    --white: white;
+    --white: rgb(255, 247, 220);
     --transparent: rgba(0, 0, 0, 0);
     --mWbV: var(--maxWidth) / var(--baseValue);
 }
@@ -59,7 +59,7 @@ body {
     margin: 0;
 }
 div, a, svg, p, img {
-    background-color: var(--transparent);
+    background-color: transparent;
     padding: 0;
     margin: 0;
     border: 0;
@@ -156,8 +156,8 @@ svg:hover {
 }
 .container {
     position: relative;
-    height: calc(100vh - 74px); /* changes made */
-    margin-top: 74px; /* changes made */
+    height: calc(100vh - calc((var(--mWbV)) * 1.55)); /* changes made */
+    margin-top: calc((var(--mWbV)) * 1.55);; /* changes made */
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-transform: translateZ(0);
@@ -601,15 +601,11 @@ svg:hover {
 }
 /* DESKTOP */
 @media only screen and (min-width:1160px) {
-    .fontXL {
+    .fontXL p {
         font-size: calc((var(--mWbV)) * 2.7); /* base value x3 */
         line-height: calc((var(--mWbV)) * 3);
         margin-bottom: calc((var(--mWbV)) * 2);
-    }
-    .fontXXL {
-        font-size: calc((var(--mWbV)) * 5.4); /* base value x3 */
-        line-height: calc((var(--mWbV)) * 6);
-        margin-bottom: calc((var(--mWbV)) * 4);
+        font-style: italic !important;
     }
 }
 /* ULTRAWIDE */
@@ -767,14 +763,19 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 
 
 /* Desktop: keep current look */
+:root {
+    --front: rgba(0, 0, 0, 1);
+    --back: #d93737;
+    --icon: black;
+}
 .menu {
     position: fixed;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgb(255, 247, 220);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     padding: calc((var(--mWbV)) * .25) calc((var(--mWbV)) * .25);
-    box-shadow: 0 0px 35px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0px 35px rgba(0, 0, 0, 0.35);
     display: flex;
     width: 100vw;
     padding-left: calc((var(--mWbV)) * 8);
@@ -789,7 +790,7 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     border-radius: 16px;
     user-select: none;
     margin: calc((var(--mWbV)) * .125);
-    border: 1px black solid;
+    border: 1.35px black solid;
     margin-bottom: 5px !important;
 }
 
@@ -799,8 +800,9 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 }
 
 .menu div.active {
-    color: white;
-    background: #d93737;
+    color: rgb(255, 247, 220);
+    background: var(--back);
+    border: 1.35px var(--back) solid;
 }
 
 /* Hide checkbox on desktop */
@@ -811,9 +813,6 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 
 /* New 3D Menu Button Styles */
 .menu-toggle-btn {
-    --front: rgba(0, 0, 0, 1);
-    --back: #d93737;
-    --icon: white;
     perspective: 600px;
     width: 48px;
     height: 48px;
@@ -839,7 +838,8 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 
 .menu-toggle-btn div span {
     --rotateY: 0deg;
-    --background: var(--front);
+    --background: rgb(255, 247, 220);
+    border: 1.35px black solid;
     transform: rotateY(var(--rotateY));
     transform-style: preserve-3d;
     position: absolute;
@@ -870,14 +870,19 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     backface-visibility: hidden;
     transform: translate(-50%, -50%) rotate(var(--rotate)) translateZ(6px);
 }
+.menu-toggle-btn div span:after {
+    background: var(--white);
+}
 
 .menu-toggle-btn div span:first-child {
     --background: var(--back);
+    border: 1.35px var(--back) solid;
     --rotateY: 180deg;
 }
 
 .menu-toggle-btn div span:first-child:before {
     --rotate: -45deg;
+    background: var(--white);
 }
 
 .menu-toggle-btn div span:first-child:after {
@@ -921,7 +926,7 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
         height: 100vh;
         margin: 0;
         padding: 80px 20px 20px;
-        background: rgba(255, 255, 255, 1);
+        background: rgb(255, 247, 220);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
         flex-direction: column;
@@ -946,7 +951,7 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
         width: 100%;
         margin: 0;
         padding: 14px 16px;
-        border-radius: 10px;
+        border-radius: 32px;
         text-align: center;
     }
 
@@ -956,6 +961,32 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     }
 }
 
-span {
-    box-shadow: 0 5px 35px rgba(0, 0, 0, 0.25) !important;
+
+
+
+
+
+
+
+
+
+
+.trial {
+    background-color: rgb(0, 92, 184) !important;
+
+}
+.trial p, .trial .fontM, .trial .fontL, .trial .fontS {
+    color: rgb(255, 247, 220) !important;
+}
+.courses {
+    background-color: rgb(232, 50, 0) !important;
+}
+.courses p, .courses .fontM {
+    color: rgb(255, 247, 220) !important;
+}
+.about {
+    background-color: rgb(0, 114, 4) !important;
+}
+.about p, .about .fontM {
+    color: rgb(255, 247, 220) !important;
 }
