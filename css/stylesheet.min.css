@@ -157,7 +157,7 @@ svg:hover {
 .container {
     position: relative;
     height: calc(100vh - calc((var(--mWbV)) * 1.55));
-    margin-top: calc((var(--mWbV)) * 1.55);
+    padding-top: calc((var(--mWbV)) * 1.55);
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-transform: translateZ(0);
@@ -765,8 +765,10 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 /* Desktop: keep current look */
 :root {
     --front: rgba(0, 0, 0, 1);
-    --back: rgb(232, 50, 0);
+    --back: rgba(232, 50, 0, 1);
     --icon: black;
+    --cream: rgba(255, 247, 220, 1);
+    --cream2: rgba(255, 247, 220, .5);
 }
 .menu {
     position: fixed;
@@ -776,11 +778,24 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     -webkit-backdrop-filter: blur(5px);
     box-shadow: 0 0px 35px rgba(0, 0, 0, 0.35);
     display: flex;
-    width: 100vw;
+    width: calc(100vw - 20px);
     padding-left: calc((var(--mWbV)) * 8);
     top: 0;
     gap: 0;
     height: calc((var(--mWbV)) * 1.55);
+    border-radius: 32px;
+    margin: 10px;
+
+
+
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid var(--cream2);
+
+
+
 }
 
 .menu div {
@@ -790,7 +805,7 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     border-radius: 16px;
     user-select: none;
     margin: calc((var(--mWbV)) * .125);
-    border: 1.35px black solid;
+    border: 1px solid transparent;
     margin-bottom: 5px !important;
     height: calc((var(--mWbV)) * .775);
     margin-top: calc((var(--mWbV)) * .3875);
@@ -798,11 +813,11 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 
 .menu div:hover {
     opacity: 1;
-    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--back);
 }
 
 .menu div.active {
-    color: rgb(255, 247, 220);
+    color: var(--cream);
     background: var(--back);
     border: 1.35px var(--back) solid;
 }
@@ -935,6 +950,12 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
         visibility: hidden;
         pointer-events: none;
         transition: opacity 0.15s ease, visibility 0.15s ease-out;
+
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid var(--cream2);
+        border-radius: 0;
     }
 
     .menu-toggle-btn:has(input:checked) ~ .menu {
