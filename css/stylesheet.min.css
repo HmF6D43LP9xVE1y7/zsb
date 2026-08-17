@@ -494,9 +494,6 @@ svg:hover {
     .gridContainer:not(:nth-of-type(1)) {
         padding-top: calc((var(--mWbV)) * 3.5);
     }
-    .courses {
-        grid-template-rows: repeat(5, calc(var(--mWbV)));
-    }
     .bestimmungen {
         grid-template-rows: repeat(18, calc(var(--mWbV)));
     }
@@ -778,7 +775,7 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     -webkit-backdrop-filter: blur(5px);
     box-shadow: 0 0px 35px rgba(0, 0, 0, 0.35);
     display: flex;
-    width: calc((var(--mWbV)) * 30);
+    width: calc((var(--mWbV)) * 30.5);
     top: 0;
     gap: 0;
     height: calc((var(--mWbV)) * 1.55);
@@ -1011,36 +1008,54 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 
 
 
+
+.updates {
+    background-color: rgb(255, 200, 0) !important;
+    overflow: hidden;
+}
+.updates p, .updates .fontS, .updates .fontM, .updates .fontL {
+    color: var(--black) !important;
+}
+
+.bestimmungen {
+    background-color: rgb(255, 247, 220) !important;
+}
+.bestimmungen p, .bestimmungen .fontS, .bestimmungen .fontM, .bestimmungen .fontL {
+    color: var(--black) !important;
+}
 .trial {
     background-color: rgb(0, 114, 184) !important;
-
 }
-.trial p, .trial .fontM, .trial .fontL, .trial .fontS {
-    color: rgb(255, 247, 220) !important;
+.trial p, .trial .fontS, .trial .fontM, .trial .fontL {
+    color: var(--cream) !important;
 }
-.courses {
-    background-color: rgb(232, 50, 0) !important;
+.zr {
+    background-color: rgb(255, 247, 220) !important;
 }
-.courses p, .courses .fontM {
-    color: rgb(255, 247, 220) !important;
-}
-.about {
-    background-color: rgb(0, 114, 4) !important;
-}
-.about p, .about .fontM {
-    color: rgb(255, 247, 220) !important;
+.zr p, .zr .fontS, .zr .fontM, .zr .fontL {
+    color: var(--black) !important;
 }
 .rental {
-    background-color: rgb(255, 200, 0) !important;
+    background-color: var(--orange) !important;
+}
+.rental p, .rental .fontS, .rental .fontM, .rental .fontL {
+    color: var(--cream) !important;
+}
+.about {
+    background-color: var(--cream) !important;
+}
+.about p, .about .fontM {
+    color: var(--black) !important;
+}
+.contact {
+    background-color: rgb(0, 114, 4) !important;
+}
+.contact p, .contact .fontS, .contact .fontM, .contact .fontL {
+    color: var(--cream) !important;
 }
 
 
 
-
-
-
-
-
-.gridContainer.courses {
-    transition: 0.3s ease-out !important;
+.gridContainer.updates {
+    transition: 0.6s ease-out !important;
 }

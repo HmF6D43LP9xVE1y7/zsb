@@ -88,8 +88,8 @@
 </label>
 <!---->
 <nav class="menu fontM">
-    <div class="menu-link active" data-target="courses">Kurse</div>
-    <div class="menu-link" data-target="bestimmungen">Kursbestimmungen</div>
+    <div class="menu-link" data-target="updates">Aktuelles</div>
+    <div class="menu-link active" data-target="bestimmungen">Kursbestimmungen</div>
     <div class="menu-link" data-target="trial">Schnuppern</div>
     <div class="menu-link" data-target="zr">Zirkus Rägeboge</div>
     <div class="menu-link active" data-target="rental">Vermietung</div>
@@ -166,8 +166,7 @@ document.querySelectorAll('.menu .menu-link').forEach(link => {
             
 
 
-            <div class="gridContainer courses" id="courses">
-            </div>
+            <div class="gridContainer updates" id="updates"></div>
             <div class="gridContainer bestimmungen" id="bestimmungen"></div>
             <div class="gridContainer trial" id="trial"></div>
             <div class="gridContainer zr" id="zr"></div>
@@ -338,10 +337,10 @@ document.querySelectorAll('.menu .menu-link').forEach(link => {
 (function() {
     const instances = [
         {
-            containerSelector: '#courses',
-            checkboxId: 'menu-expand-courses',
+            containerSelector: '#updates',
+            checkboxId: 'menu-expand-updates',
             collapsedRows: 2.5,
-            expandedRows: 28,
+            expandedRows: 25,
             positionTop: 'calc((var(--mWbV)) * 1)',
             positionRight: 'calc((var(--mWbV)) * 1)',
             labelText: 'container erweitern...'
@@ -383,7 +382,7 @@ document.querySelectorAll('.menu .menu-link').forEach(link => {
 
 <script>
     (function() {
-  const container = document.querySelector('#courses') || document.querySelector('.courses');
+  const container = document.querySelector('#updates') || document.querySelector('.updates');
   if (!container) return;
 
   // Ensure relative positioning only if needed
@@ -402,10 +401,10 @@ document.querySelectorAll('.menu .menu-link').forEach(link => {
       height: 12px;
       background: repeating-linear-gradient(
        -45deg,
-        rgb(255, 247, 220) 0px,
-        rgb(255, 247, 220) 8px,
-        rgba(232, 50, 0, 1) 8px,
-        rgba(232, 50, 0, 1) 16px
+        rgb(255, 200, 0) 0px,
+        rgb(255, 200, 0) 8px,
+        black 8px,
+        black 16px
       );
       background-size: 23px 23px;
       animation: stripeSlide 0.8s linear infinite;
@@ -420,10 +419,10 @@ document.querySelectorAll('.menu .menu-link').forEach(link => {
       height: 12px;
       background: repeating-linear-gradient(
         -45deg,
-        rgb(255, 247, 220) 0px,
-        rgb(255, 247, 220) 8px,
-        rgba(232, 50, 0, 1) 8px,
-        rgba(232, 50, 0, 1) 16px
+        rgb(255, 200, 0) 0px,
+        rgb(255, 200, 0) 8px,
+        black 8px,
+        black 16px
       );
       background-size: 23px 23px;
       animation: stripeSlideReverse 0.8s linear infinite;
