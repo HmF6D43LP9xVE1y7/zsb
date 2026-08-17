@@ -87,10 +87,10 @@
     </div>
 </label>
 <!---->
-<nav class="menu fontS">
+<nav class="menu fontM">
     <div class="menu-link active" data-target="courses">Kurse</div>
     <div class="menu-link" data-target="bestimmungen">Kursbestimmungen</div>
-    <div class="menu-link" data-target="trial">Schnupper</div>
+    <div class="menu-link" data-target="trial">Schnuppern</div>
     <div class="menu-link" data-target="zr">Zirkus Rägeboge</div>
     <div class="menu-link active" data-target="rental">Vermietung</div>
     <div class="menu-link" data-target="about">Über uns</div>
@@ -166,7 +166,8 @@ document.querySelectorAll('.menu .menu-link').forEach(link => {
             
 
 
-            <div class="gridContainer courses" id="courses"></div>
+            <div class="gridContainer courses" id="courses">
+            </div>
             <div class="gridContainer bestimmungen" id="bestimmungen"></div>
             <div class="gridContainer trial" id="trial"></div>
             <div class="gridContainer zr" id="zr"></div>
@@ -322,6 +323,131 @@ document.querySelectorAll('.menu .menu-link').forEach(link => {
     }
 
     checkbox.addEventListener('change', toggleSQOverlay);
+})();
+
+</script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    const instances = [
+        {
+            containerSelector: '#courses',
+            checkboxId: 'menu-expand-courses',
+            collapsedRows: 2.5,
+            expandedRows: 28,
+            positionTop: 'calc((var(--mWbV)) * 1)',
+            positionRight: 'calc((var(--mWbV)) * 1)',
+            labelText: 'container erweitern...'
+        }
+        // add more checkboxes here, array
+    ];
+    
+    instances.forEach(c => {
+        const el = document.querySelector(c.containerSelector);
+        if (!el) return;
+        
+        el.style.cssText = 'position:relative;grid-template-columns:repeat(var(--baseValue), calc(var(--mWbV)));grid-template-rows:repeat(' + c.expandedRows + ', calc(var(--mWbV)));max-height:calc(' + c.collapsedRows + ' * var(--mWbV));transition:max-height 0.15s ease-out;z-index:0;';
+        
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'position:absolute;top:' + c.positionTop + ';right:' + c.positionRight + ';z-index:999;display:flex;align-items:center;gap:calc((var(--mWbV)) * 0.25);pointer-events:auto;';
+        
+        const cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.id = c.checkboxId;
+        cb.checked = false;
+        cb.style.cssText = 'cursor:pointer;width:calc((var(--mWbV)) * 0.6);height:calc((var(--mWbV)) * 0.6);flex-shrink:0;';
+        
+        const lb = document.createElement('label');
+        lb.htmlFor = c.checkboxId;
+        lb.textContent = c.labelText;
+        lb.style.cssText = 'font-family:monospace;font-size:calc((var(--mWbV)) * 0.35);cursor:pointer;user-select:none;white-space:nowrap;';
+        
+        wrap.append(cb, lb);
+        el.prepend(wrap);
+        
+        cb.onchange = function() {
+            el.style.maxHeight = 'calc(' + (this.checked ? c.expandedRows : c.collapsedRows) + ' * var(--mWbV))';
+        };
+    });
+})();
+</script>
+
+
+
+<script>
+    (function() {
+  const container = document.querySelector('#courses') || document.querySelector('.courses');
+  if (!container) return;
+
+  // Ensure relative positioning only if needed
+  if (window.getComputedStyle(container).position === 'static') {
+    container.style.position = 'relative';
+  }
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .animated-warning-border::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 12px;
+      background: repeating-linear-gradient(
+       -45deg,
+        rgb(255, 247, 220) 0px,
+        rgb(255, 247, 220) 8px,
+        rgba(232, 50, 0, 1) 8px,
+        rgba(232, 50, 0, 1) 16px
+      );
+      background-size: 23px 23px;
+      animation: stripeSlide 0.8s linear infinite;
+      z-index: 1;
+    }
+
+    .animated-warning-border .bottom-border {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 12px;
+      background: repeating-linear-gradient(
+        -45deg,
+        rgb(255, 247, 220) 0px,
+        rgb(255, 247, 220) 8px,
+        rgba(232, 50, 0, 1) 8px,
+        rgba(232, 50, 0, 1) 16px
+      );
+      background-size: 23px 23px;
+      animation: stripeSlideReverse 0.8s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes stripeSlide {
+      from { background-position: 0 0; }
+      to { background-position: 23px 23px; }
+    }
+
+    @keyframes stripeSlideReverse {
+      from { background-position: 23px 23px; }
+      to { background-position: 0 0; }
+    }
+  `;
+
+  document.head.appendChild(style);
+  container.classList.add('animated-warning-border');
+
+  // Add bottom border as separate element (doesn't conflict with your ::after)
+  const bottomBorder = document.createElement('div');
+  bottomBorder.className = 'bottom-border';
+  container.appendChild(bottomBorder);
 })();
 </script>
     </body>

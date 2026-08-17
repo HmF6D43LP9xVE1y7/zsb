@@ -156,8 +156,8 @@ svg:hover {
 }
 .container {
     position: relative;
-    height: calc(100vh - calc((var(--mWbV)) * 1.55));
-    padding-top: calc((var(--mWbV)) * 1.55);
+    height: 100vh;
+    padding-top: calc((var(--mWbV)) * 2.15);
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-transform: translateZ(0);
@@ -474,7 +474,7 @@ svg:hover {
 /* PHONE */
 @media only screen and (max-width:767.9px) {
     .gridContainer:nth-of-type(1) {
-        padding-top: calc((var(--mWbV)) * 2.48); /* guessed value, could be .1 smaller or so, fix worth it? perhaps not */
+        margin-top: calc((var(--mWbV)) * 2.48); /* guessed value, could be .1 smaller or so, fix worth it? perhaps not */
     }
     .gridContainer:not(:nth-of-type(1)) {
         margin-top: calc((var(--mWbV)) * 16);
@@ -492,28 +492,28 @@ svg:hover {
 /* ALL BUT PHONE */
 @media only screen and (min-width:768px) {
     .gridContainer:not(:nth-of-type(1)) {
-        margin-top: calc((var(--mWbV)) * 3.5);
+        padding-top: calc((var(--mWbV)) * 3.5);
     }
     .courses {
-        grid-template-rows: repeat(24, calc(var(--mWbV)));
+        grid-template-rows: repeat(5, calc(var(--mWbV)));
     }
     .bestimmungen {
-        grid-template-rows: repeat(15, calc(var(--mWbV)));
+        grid-template-rows: repeat(18, calc(var(--mWbV)));
     }
     .trial {
-        grid-template-rows: repeat(24, calc(var(--mWbV)));
+        grid-template-rows: repeat(33, calc(var(--mWbV)));
     }
     .zr {
-        grid-template-rows: repeat(24, calc(var(--mWbV)));
+        grid-template-rows: repeat(28, calc(var(--mWbV)));
     }
     .rental {
-        grid-template-rows: repeat(24, calc(var(--mWbV)));
+        grid-template-rows: repeat(32, calc(var(--mWbV)));
     }
     .about {
         grid-template-rows: repeat(24, calc(var(--mWbV)));
     }
     .contact {
-        grid-template-rows: repeat(24, calc(var(--mWbV)));
+        grid-template-rows: repeat(9, calc(var(--mWbV)));
     }
 
 
@@ -765,7 +765,7 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 /* Desktop: keep current look */
 :root {
     --front: rgba(0, 0, 0, 1);
-    --back: rgba(232, 50, 0, 1);
+    --orange: rgba(232, 50, 0, 1);
     --icon: black;
     --cream: rgba(255, 247, 220, 1);
     --cream2: rgba(255, 247, 220, .5);
@@ -778,13 +778,13 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     -webkit-backdrop-filter: blur(5px);
     box-shadow: 0 0px 35px rgba(0, 0, 0, 0.35);
     display: flex;
-    width: calc(100vw - 20px);
-    padding-left: calc((var(--mWbV)) * 8);
+    width: calc((var(--mWbV)) * 30);
     top: 0;
     gap: 0;
     height: calc((var(--mWbV)) * 1.55);
-    border-radius: 32px;
+    border-radius: 16px;
     margin: 10px;
+    margin-left: calc((var(--mWbV)) * 8.5);
 
 
 
@@ -802,25 +802,42 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     color: var(--black);
     cursor: pointer;
     padding: calc((var(--mWbV)) * .125) calc((var(--mWbV)) * .25);
-    border-radius: 16px;
+    border-radius: 8px;
     user-select: none;
     margin: calc((var(--mWbV)) * .125);
     border: 1px solid transparent;
     margin-bottom: 5px !important;
-    height: calc((var(--mWbV)) * .775);
-    margin-top: calc((var(--mWbV)) * .3875);
+    height: calc((var(--mWbV)) * 1);
+    margin: calc((var(--mWbV)) * .25) 0 0 calc((var(--mWbV)) * .25);
 }
 
-.menu div:hover {
-    opacity: 1;
-    border: 1px solid var(--back);
-}
-
-.menu div.active {
+.menu div:hover, .menu div.active {
     color: var(--cream);
-    background: var(--back);
-    border: 1.35px var(--back) solid;
+    background: var(--orange);
+    border: 1.35px var(--orange) solid;
 }
+.menu .menu-link[data-target="bestimmungen"]:hover, .menu div.active[data-target="bestimmungen"] {
+    color: var(--cream);
+    background: var(--black);
+    border: 1.35px var(--black) solid;
+}
+.menu .menu-link[data-target="trial"]:hover, .menu div.active[data-target="trial"] {
+    color: rgb(0, 114, 184);
+    background: var(--cream);
+    border: 1.35px var(--cream) solid;
+}
+.menu .menu-link[data-target="rental"]:hover, .menu div.active[data-target="rental"] {
+    color: rgba(255, 213, 0, 1);
+    background: var(--black);
+    border: 1.35px var(--black) solid;
+}
+.menu .menu-link[data-target="about"]:hover, .menu div.active[data-target="about"] {
+    color: rgb(0, 114, 4);
+    background: var(--cream);
+    border: 1.35px var(--cream) solid;
+}
+
+
 
 /* Hide checkbox on desktop */
 .menu-toggle,
@@ -855,7 +872,7 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 
 .menu-toggle-btn div span {
     --rotateY: 0deg;
-    --background: rgb(255, 247, 220);
+    --orange: rgb(255, 247, 220);
     border: 1.35px black solid;
     transform: rotateY(var(--rotateY));
     transform-style: preserve-3d;
@@ -865,7 +882,7 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: var(--background);
+    background: var(--orange);
     backface-visibility: hidden;
     transition: transform .6s cubic-bezier(.2, .64, .48, 1.24);
     /* Halbtransparent statt vollfarbig */
@@ -892,8 +909,8 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 }
 
 .menu-toggle-btn div span:first-child {
-    --background: var(--back);
-    border: 1.35px var(--back) solid;
+    --orange: var(--orange);
+    border: 1.35px var(--orange) solid;
     --rotateY: 180deg;
 }
 
@@ -995,7 +1012,7 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 
 
 .trial {
-    background-color: rgb(0, 92, 184) !important;
+    background-color: rgb(0, 114, 184) !important;
 
 }
 .trial p, .trial .fontM, .trial .fontL, .trial .fontS {
@@ -1012,4 +1029,18 @@ content spacing from bottom, abstand 1 von "info" oder icons? entscheiden was sc
 }
 .about p, .about .fontM {
     color: rgb(255, 247, 220) !important;
+}
+.rental {
+    background-color: rgb(255, 200, 0) !important;
+}
+
+
+
+
+
+
+
+
+.gridContainer.courses {
+    transition: 0.3s ease-out !important;
 }
